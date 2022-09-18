@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" class="sid-plesk">
 <head>
-    <title>Emploi Du Temps | L3 Miage</title>
+    <title>Aujourd'hui | L3 Miage</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta property="og:site_name" content="L3 Miage | Orléans">
-    <meta name="description" content="Voici l'emploi du temps des L3 Miage d'Orléans">
+    <meta name="description" content="Voici l'emploi du temps d'Aujourd'hui des L3 Miage d'Orléans">
     <meta name="theme-color" content="#07a89e"/>
     <link href="img/l3_.png" rel="shortcut icon"/>
     <link rel="stylesheet" href="/style.css">
@@ -88,12 +88,44 @@
     $body = substr($response, $header_size);
     $identifier = explode("&", explode("identifier=",$response)[1])[0];
     ?>
-
+    <?php
+    date_default_timezone_set('Europe/Paris');
+    $date = date("Y-m-d H:i:s");
+    $day = date('D', strtotime($date));
+    $week = date("W", strtotime($date)) - 34;
+    //$day = date('D', strtotime($date));
+    ?>
     <div class="maincontent">
-        <a class="basebutton"  href="/today.php">Aujourd'hui</a>
-        <h1 style="font-size: 22px;margin-bottom: 0px">📆 Emploi Du Temps :</h1>
+        <a class="basebutton"  href="/index.php">Semaine</a>
+        <h1 style="font-size: 22px;margin-bottom: 0px">📆 Aujourd'hui :</h1>
         <p style="margin-left: 35px;"><i><?php if(isset($_POST['tdGrp'])){ ?> TD Groupe <?= $_POST['tdGrp'] ?> </i>|<i> TP Groupe <?= $_POST['tpGrp'] ?> <?php } ?></i></p>
-        <img class="edt" style="height: 100%" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=5&idPianoDay=0%2C1%2C2%2C3%2C4&idTree=<?=$val?>&width=1600&height=700&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>
+        <?php
+        switch($day){
+            case 'Mon':
+                $currday = '0';
+                break;
+            case 'Tue':
+                $currday = '1';
+                break;
+            case 'Wed':
+                $currday = '3';
+                break;
+            case 'Thu':
+                $currday = '4';
+                break;
+            case 'Fri':
+                $currday = '5';
+                break;
+            case 'Sat':
+                $currday = '6';
+                break;
+            case 'Sun':
+                $currday = '0';
+                $week = $week + 1;
+                break;
+        }
+        ?>
+        <img class="edt" style="height: 100%" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=<?=$week ?>&idPianoDay=<?=$currday?>&idTree=<?=$val?>&width=520&height=700&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>
     </div>
 
 </div>
