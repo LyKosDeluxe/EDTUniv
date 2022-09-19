@@ -38,10 +38,10 @@
         if(isset($_POST['tpGrp'])){
             switch($_POST['tdGrp']){
                 case 1:
-                    $val = "37171%2C31260";
+                    $val = "37171%2C31260%2C2278";
                     break;
                 case 2:
-                    $val = "37172%2C31260";
+                    $val = "37172%2C31260%2C2278";
                     break;
             }
             switch($_POST['tpGrp']){
