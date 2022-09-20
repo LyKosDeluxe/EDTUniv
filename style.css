@@ -1,81 +1,339 @@
-/* Style et Logo par @lykosisback lykos.vortexdev.fr */
+/* Style et Logos par @lykosisback | lykos.vortexdev.fr */
 
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400&family=Reem+Kufi&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
 @font-face {
-    src:url(https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap);
-    font-family: 'Hammersmith One', sans-serif;
+    src: url(https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap);
+    font-family: 'Red Hat Display', sans-serif;
 }
-    .logo{
-        height:36px;
-        float: left;
-        margin:14px 12px 0px 12px;
-    }
-    .edt{
-     
-    }
-    html {
-        font-family: 'Hammersmith One', sans-serif;
-        margin: 0;
+
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
+
+@font-face {
+    src: url(https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap);
+    font-family: 'Reem Kufi', sans-serif;
+}
+
+.logo {
+    height: 24px;
+    margin: 14px 12px 0px 12px;
+}
+
+.edt {
+    animation: cardpopup 0.6s cubic-bezier(0, 0.04, 0, 1.13);
+    filter: hue-rotate(46deg) saturate(0.7);
+}
+
+@media (max-width: 480px) {
+    .edt {
+        animation: cardpopupmobile 0.6s cubic-bezier(0, 0.04, 0, 1.13);
+        filter: hue-rotate(46deg) saturate(0.7);
+        margin-left: -5px;
     }
 
-    body {
-        margin: 0;
+}
+
+@keyframes cardpopup {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes cardpopupmobile {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+html {
+    font-family: 'Red Hat Display', sans-serif;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+select {
+    width: 75px;
+    height: 30px;
+    padding: 6px 2px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    background: #e2e2e2;
+    border-width: 0px;
+    font-family: 'Red Hat Display', sans-serif;
+    color: rgb(0, 0, 0);
+    outline: none;
+    border-left: 3px solid;
+    border-color: #07a89e;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+hr {
+    width: 250px;
+    height: 2px;
+    -webkit-appearance: none;
+    border-radius: 6px;
+    border-style: none;
+    background-color: rgb(92, 92, 92);
+    margin-bottom: 25px;
+}
+
+@media (max-width: 480px) {
+    hr {
+        width: 95%;
+        height: 2px;
+        -webkit-appearance: none;
+        border-radius: 6px;
+        border-style: none;
+        background-color: rgb(92, 92, 92);
+        margin-bottom: 25px;
+    }
+
+}
+
+.header {
+    height: 52px;
+    width: auto;
+    background: #07a89e;
+    margin-bottom: 5px;
+    line-height: 65px;
+    color: rgb(255, 255, 255);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    box-shadow: inset;
+    box-shadow: #000 0px -5px 12px;
+    z-index: 2;
+}
+
+.center {
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .center {
+        text-align: center;
+        font-size: 10px;
+        white-space: nowrap;
     }
 
     select {
         width: 75px;
-        height: 29px;
+        height: 28px;
         padding: 6px 2px;
         margin: 4px 0;
         box-sizing: border-box;
-        background: #ffffff;
+        background: #e2e2e2;
         border-width: 0px;
-        font-family: 'Hammersmith One', sans-serif;
+        font-family: 'Red Hat Display', sans-serif;
+        font-size: 11px;
         color: rgb(0, 0, 0);
         outline: none;
         border-left: 3px solid;
-        border-color: #2ebeb5;
-        -webkit-appearance: none
+        border-color: #07a89e;
+        -webkit-appearance: none;
+        border-radius: 3px;
     }
 
-    .selectcontainer {
-        height: auto;
-        width: auto;
-        background: #07a89e;
-        line-height: 65px;
-        color: rgb(255, 255, 255);
+}
+
+.btnsubmit {
+    padding: 4px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: auto;
+    color: #ffffff;
+    background-color: #07a89e;
+    transition-property: background-color, border, color;
+    transition-duration: 0.5s;
+    font-family: 'Red Hat Display', sans-serif;
+    border-style: solid;
+    border-color: #07a89e;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+.btnsubmit:hover {
+    background-color: #38c9bf00;
+    transition-property: background-color, border, color;
+    transition-duration: 0.3s;
+    border-style: solid;
+    color: #07a89e;
+    border-color: #07a89e;
+}
+
+.maincontent {
+    margin: 12px;
+}
+
+@media (max-width: 480px) {
+    .maincontent {
+        margin: 5px;
     }
 
-    .btnsubmit {
-        padding: 4px;
-        margin: 8px 0;
+}
+
+p {
+    margin-top: 0;
+}
+
+.basebutton {
+    margin: 15px 0px 10px 0px;
+    cursor: pointer;
+    width: auto;
+    color: #ffffff;
+    border-radius: 3px;
+    background-color: #07a89e;
+    padding: 8px;
+    transition-property: background-color, border, color;
+    transition-duration: 0.5s;
+    font-family: 'Red Hat Display', sans-serif;
+    border-style: solid;
+    border-color: #07a89e;
+    text-decoration: none;
+
+}
+
+.basebutton:hover {
+    background-color: #38c9bf00;
+    transition-property: background-color, border, color;
+    transition-duration: 0.3s;
+    border-style: solid;
+    border-width: 3px;
+    color: #07a89e;
+    border-color: #07a89e;
+}
+
+.contenthead {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+    .basebutton {
+        margin: 15px 0px 10px 0px;
         cursor: pointer;
         width: auto;
-        color: #000000;
-        background-color: #ffffff;
+        color: #ffffff;
+        border-radius: 3px;
+        background-color: #07a89e;
+        padding: 8px;
         transition-property: background-color, border, color;
         transition-duration: 0.5s;
-        font-family: 'Hammersmith One', sans-serif;
+        font-size: 11px;
+        font-family: 'Red Hat Display', sans-serif;
         border-style: solid;
-        border-color: #ffffff;
-        -webkit-appearance: none
+        border-color: #07a89e;
+        text-decoration: none;
     }
 
-    .btnsubmit:hover {
-        background-color: #38c9bf27;
+    .basebutton:hover {
+        background-color: #38c9bf00;
         transition-property: background-color, border, color;
         transition-duration: 0.3s;
         border-style: solid;
-        color: #ffffff;
-        border-color: #38c9bf;
+        border-width: 3px;
+        color: #07a89e;
+        border-color: #07a89e;
     }
+}
 
-    .maincontent {
-        margin: 12px;
+form {
+    margin-left: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+    height: 12px;
+    background-color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aaaaaa;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #046d66;
+
+}
+
+::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+    background: #07a89e;
+}
+
+.red {
+    color: #ff3636;
+}
+
+.centeritem {
+    display: flex;
+    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cards {
+    background: rgb(225 225 225);
+    color: #000000;
+    width: auto;
+    min-width: auto;
+    height: auto;
+    min-height: auto;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 15px;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .cards {
+        background: rgb(225 225 225);
+        color: #000000;
+        width: auto;
+        min-width: auto;
+        font-size: 11px;
+        height: auto;
+        min-height: auto;
+        border-radius: 16px;
+        margin: 9px;
+        text-align: left;
+        padding: 15px;
+        text-decoration: none;
     }
+}
 
-    p {
-        margin-top: 0;
-    }
 
+/*     __        __ __       
+      / /  __ __/ //_/__  ___
+     / /__/ // / ,< / _ \(_-<
+    /____/\_, /_/|_|\___/___/
+         /___/ 
+*/
