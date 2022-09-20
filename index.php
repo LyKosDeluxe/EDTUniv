@@ -110,7 +110,7 @@
 <div class="centeritem">
 <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank" style="text-decoration:none;">
     <div class="cards">
-        Tu peux venir nous aider en nous soumettant tes idées et correctifs depuis le <u>GitHub du projet</u> !
+     Tu souhaites nous aider ? Viens soumettre tes idées et correctifs depuis le <u>GitHub du projet</u> !
     </div>
 </a>
 </div>
