@@ -20,6 +20,7 @@
 }
 
 .edt {
+    width: 95%;
     animation: cardpopup 0.6s cubic-bezier(0, 0.04, 0, 1.13);
     filter: hue-rotate(46deg) saturate(0.7);
 }
@@ -190,7 +191,6 @@ hr {
     .maincontent {
         margin: 5px;
     }
-
 }
 
 p {

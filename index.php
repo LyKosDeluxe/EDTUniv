@@ -101,7 +101,7 @@
         $imgheight = 1920;
     }
     else{
-        $imgwidth = 1920;
+        $imgwidth = 1300;
         $imgheight = 1080;
     }
     ?>
@@ -115,8 +115,8 @@
          <a class="basebutton"  href="/today.php">Aujourd'hui</a>
         </div>
         </div>
-        <div class="center">
-         <img class="edt" style="width: 100%" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=5&idPianoDay=0%2C1%2C2%2C3%2C4&idTree=<?=$val?>&width=<?=$imgwidth?>&height=<?=$imgwidth?>&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>
+        <div class="center" id="edtContainer">
+         
         </div>
     </div>
 </div>
@@ -125,13 +125,22 @@
 <div class="centeritem">
 <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank" style="text-decoration:none;">
     <div class="cards">
-        Eh ! Mais toi aussi tu dev ?!<br> Tu peux venir nous aider en nous soumettant tes idées et correctifs depuis le <u>GitHub du projet</u> !
+        Tu peux venir nous aider en nous soumettant tes idées et correctifs depuis le <u>GitHub du projet</u> !
     </div>
 </a>
 </div>
 </body>
+<script type="application/javascript">
+    var div = document.getElementById("edtContainer");
+    console.log(div);
+    var height = document.documentElement.clientHeight;
+    var width = document.documentElement.clientWidth;
+    if(width<height){
+        width = height;
+    }
+    div.innerHTML = `<img class="edt" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=5&idPianoDay=0%2C1%2C2%2C3%2C4&idTree=<?=$val?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
+</script>
 <footer class="center">
-    
     <p>Réalisé avec <span class="red">❤</span> par <a href="https://marcvirgili.fr" target="_blank">Marc Virgili</a> & <a href="https://lykos.vortexdev.fr/" target="_blank">LyKøs</a></p>
 </footer>
 </html>
