@@ -136,7 +136,7 @@
         ?>
           
           <div class="center">
-        <img class="edt" style="height: <?=$imgheight?>px" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=<?=$week ?>&idPianoDay=<?=$currday?>&idTree=<?=$val?>&width=<?=$imgwidth?>&height=700&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>
+        <img class="edt" alt="En temps normal, il y a une image d'un emploi du temps." style="height: <?=$imgheight?>px" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?=$identifier?>&projectId=3&idPianoWeek=<?=$week ?>&idPianoDay=<?=$currday?>&idTree=<?=$val?>&width=<?=$imgwidth?>&height=700&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>
     </div>
     </div>
 
@@ -144,7 +144,7 @@
 <div class="centeritem">
 <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank" style="text-decoration:none;">
     <div class="cards">
-        Tu peux venir nous aider en nous soumettant tes idées et correctifs depuis le <u>GitHub du projet</u> !
+    Tu souhaites nous aider ? Viens soumettre tes idées et correctifs depuis le <u>GitHub du projet</u> !
     </div>
 </a>
 </div>
