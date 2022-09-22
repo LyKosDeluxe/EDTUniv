@@ -62,13 +62,17 @@
     }
 }
 
-html {
+html, body {
     font-family: 'Red Hat Display', sans-serif;
     margin: 0;
 }
 
-body {
-    margin: 0;
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 select {
@@ -227,7 +231,12 @@ p {
 .contenthead {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
+}
+
+.contenthead > *{
+    margin: 0px;
 }
 
 @media (max-width: 480px) {

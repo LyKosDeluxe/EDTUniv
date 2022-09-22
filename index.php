@@ -19,13 +19,14 @@
     <div class="header">
         <img src="img/l3_b.png" class="logo"></img>
     </div>
-        <form class="center" method="POST" action="index.php">
-            <label for="tdGrp">Groupe de TD</label>
+        <form class="center form" method="POST" action="index.php">
+            <label for="tdGrp">TD
             <select name="tdGrp">
                 <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Grp 1</option>
                 <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Grp 2</option>
             </select>
-            <label for="tpGrp">Groupe de TP
+            </label>
+            <label for="tpGrp">TP
             <select name="tpGrp">
                 <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Grp 1</option>
                 <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Grp 2</option>
@@ -92,13 +93,30 @@
     ?>
     <div class="maincontent">
         <div class="contenthead">
-         <div style="display: flex;flex-direction: column;">
-            <h1 style="font-size: 22px;margin-bottom: 0px">📅 Emploi Du Temps :</h1>
-            <p style="margin-left: 35px;"><i><?php if(isset($_POST['tdGrp'])){ ?> TD Groupe <?= $_POST['tdGrp'] ?> </i>|<i> TP Groupe <?= $_POST['tpGrp'] ?> <?php } ?></i></p>
-         </div>
-        <div class="contenthead" style="flex-direction: column;">
-         <a class="basebutton"  href="today.php">Aujourd'hui</a>
-        </div>
+            <div>
+                <h1 style="font-size: 22px;margin-bottom: 0px">📅 Emploi Du Temps :</h1>
+                <p style="margin-left: 35px;"><i><?php if(isset($_POST['tdGrp'])){ ?> TD Groupe <?= $_POST['tdGrp'] ?> </i>|<i> TP Groupe <?= $_POST['tpGrp'] ?> <?php } ?></i></p>
+            </div>
+            <label for="tdGrp">Semaine
+                <select style="text-align-last: center;" name="semaine">
+                    <?php
+                    date_default_timezone_set('Europe/Paris');
+                    $date = date("Y-m-d H:i:s");
+                    $week = date("W", strtotime($date)) - 33;
+                    $year = date("Y", strtotime($date));
+                    for($i = 0; $i<53; $i++){
+                        $monday = new DateTime;
+                        $sunday = new DateTime;
+                        $monday->setISODate($year, $i+33, 1);
+                        $sunday->setISODate($year, $i+33, 5);
+                        echo '<option style="display: flex; align-items: center; justify-content: center;" value="'.($i+33).'"'.(($i==$week)?'selected':'').'><center>'.date_format($monday, 'Y-m-d').' - '.date_format($sunday, 'Y-m-d').'</center></option>';
+                    }
+                    ?>
+                </select>
+            </label>
+            <div class="contenthead">
+                <a class="basebutton"  href="today.php">Aujourd'hui</a>
+            </div>
         </div>
         <div class="center" id="edtContainer">
          

@@ -135,9 +135,9 @@
         }
         ?>
           
-          <div class="center">
-        <img class="edt" alt="En temps normal, il y a une image d'un emploi du temps." style="height: <?=$imgheight?>px" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?=$identifier?>&projectId=3&idPianoWeek=<?=$week ?>&idPianoDay=<?=$currday?>&idTree=<?=$val?>&width=<?=$imgwidth?>&height=700&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>
-    </div>
+        <div class="center" id="edtContainer">
+         
+        </div>
     </div>
 
 </div>
@@ -149,6 +149,16 @@
 </a>
 </div>
 </body>
+<script type="application/javascript">
+    var div = document.getElementById("edtContainer");
+    console.log(div);
+    var height = document.documentElement.clientHeight;
+    var width = document.documentElement.clientWidth;
+    if(width<height){
+        width = height;
+    }
+    div.innerHTML = `<img class="edt" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=<?=$week?>&idPianoDay=<?=$currday?>&idTree=<?=$val?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
+</script>
 <footer class="center">
     <p>Réalisé par <a href="https://marcvirgili.fr" target="_blank">Marc Virgili</a> & <a href="https://lykos.vortexdev.fr/" target="_blank">LyKøs</a></p>
 </footer>
