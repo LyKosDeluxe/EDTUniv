@@ -117,16 +117,16 @@
                 $currday = '1';
                 break;
             case 'Wed':
-                $currday = '3';
+                $currday = '2';
                 break;
             case 'Thu':
-                $currday = '4';
+                $currday = '3';
                 break;
             case 'Fri':
-                $currday = '5';
+                $currday = '4';
                 break;
             case 'Sat':
-                $currday = '6';
+                $currday = '5';
                 break;
             case 'Sun':
                 $currday = '0';
