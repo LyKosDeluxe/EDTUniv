@@ -15,32 +15,8 @@
     <link rel="apple-touch-icon" sizes="128x128" href="img/l3large.png">
 </head>
 <body>
-<div id="mainContent">
-    <div class="header">
-        <img src="img/l3_b.png" class="logo"></img>
-    </div>
-        <form class="center form" method="POST" action="index.php">
-            <label for="tdGrp">TD
-            <select name="tdGrp">
-                <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Grp 1</option>
-                <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Grp 2</option>
-            </select>
-            </label>
-            <label for="tpGrp">TP
-            <select name="tpGrp">
-                <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Grp 1</option>
-                <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Grp 2</option>
-                <option value="3" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 3){echo'selected';} ?>> Grp 3</option>
-                <option value="4" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 4){echo'selected';} ?>> Grp 4</option>
-            </select>
-            </label>
-            <button class="btnsubmit" type="submit">Valider</button>
-        </form>
-        <hr>
-    <?php
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
+<?php
+    function groupeID(){
         if(isset($_POST['tpGrp'])){
             switch($_POST['tdGrp']){
                 case 1:
@@ -68,52 +44,92 @@
         else{
             $val = "37171%2C37172%2C50166%2C50167%2C26013%2C34655%2C31260%2C31223%2C69178%2C31339";
         }
+        return $val;
+    }
+    function generateIdentifier(){
+        $ch = curl_init("https://aderead.univ-orleans.fr/jsp/custom/modules/plannings/direct_planning.jsp?days=0%2C1%2C2%2C3%2C4%2C5&displayConfName=ENT&height=700&login=etuWeb&password=&projectId=3&resources=2278&showOptions=false&showPianoDays=false&showPianoWeeks=false&showTree=false&weeks=4");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+        $response = curl_exec($ch);
+        $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $header = substr($response, 0, $header_size);
+        curl_close($ch);
+        $JSESSIONID = explode("=", explode(":", explode(";", $header)[2])[2])[1];
 
-    $ch = curl_init("https://aderead.univ-orleans.fr/jsp/custom/modules/plannings/direct_planning.jsp?days=0%2C1%2C2%2C3%2C4%2C5&displayConfName=ENT&height=700&login=etuWeb&password=&projectId=3&resources=2278&showOptions=false&showPianoDays=false&showPianoWeeks=false&showTree=false&weeks=4"); // such as http://example.com/example.xml
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    $response = curl_exec($ch);
-    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-    $header = substr($response, 0, $header_size);
-    curl_close($ch);
-    $JSESSIONID = explode("=", explode(":", explode(";", $header)[2])[2])[1];
+        $ch = curl_init("https://aderead.univ-orleans.fr/jsp/custom/modules/plannings/imagemap.jsp?clearTree=true&width=150&height=150"); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Cookie: JSESSIONID='.$JSESSIONID
+        ));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    $ch = curl_init("https://aderead.univ-orleans.fr/jsp/custom/modules/plannings/imagemap.jsp?clearTree=true&width=150&height=150"); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Cookie: JSESSIONID='.$JSESSIONID
-    ));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        return explode("&", explode("identifier=",$response)[1])[0];
+    }
 
-    $response = curl_exec($ch);
+?>
+<div id="mainContent">
+    <div class="header">
+        <a href="index.php">
+            <img alt="logo" src="img/l3_b.png" class="logo"></img>
+        </a>   
+    </div>
+        <form class="center form" method="POST" action="index.php">
+            <label for="tdGrp">Semaine
+                    <?php
+                    date_default_timezone_set('Europe/Paris');
+                    $date = date("Y-m-d H:i:s");
+                    $week = date("W", strtotime($date));
+                    $year = date("Y", strtotime($date));
+                    echo '<input onchange="this.form.submit()" value="'.(
+                        !isset($_POST['week'])?
+                        $year.'-W'.(
+                            strlen($week)<2?
+                            '0'+$week
+                            :
+                            $week
+                        ):
+                        $_POST['week']).'" type="week" name="week" id="camp-week" min="'.$year.'-W33" max="'.($year+1).'-W30" required>';
+                    if($week < 33){
+                        $year -= 1 ;
+                    }
+                    else{
+                        $week -= 33 ;
+                    }
+                    if(isset($_POST['week'])){
+                        $week = explode("-W", $_POST['week'])[1];
+                        if($week < 33){
+                            $week += 33;
+                        }
+                        else{
+                            $week -= 33;
+                        }
+                    }
 
-    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-    $header = substr($response, 0, $header_size);
-    $body = substr($response, $header_size);
-    $identifier = explode("&", explode("identifier=",$response)[1])[0];
-    ?>
+                    ?>
+                </label>
+            <label for="tdGrp">TD
+            <select name="tdGrp">
+                <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Grp 1</option>
+                <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Grp 2</option>
+            </select>
+            </label>
+            <label for="tpGrp">TP
+            <select name="tpGrp">
+                <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Grp 1</option>
+                <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Grp 2</option>
+                <option value="3" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 3){echo'selected';} ?>> Grp 3</option>
+                <option value="4" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 4){echo'selected';} ?>> Grp 4</option>
+            </select>
+            </label>
+            <button class="btnsubmit" type="submit">Valider</button>
+        </form>
+        <hr>
     <div class="maincontent">
         <div class="contenthead">
             <div>
                 <h1 style="font-size: 22px;margin-bottom: 0px">📅 Emploi Du Temps :</h1>
                 <p style="margin-left: 35px;"><i><?php if(isset($_POST['tdGrp'])){ ?> TD Groupe <?= $_POST['tdGrp'] ?> </i>|<i> TP Groupe <?= $_POST['tpGrp'] ?> <?php } ?></i></p>
             </div>
-            <label for="tdGrp">Semaine
-                <select style="text-align-last: center;" name="semaine">
-                    <?php
-                    date_default_timezone_set('Europe/Paris');
-                    $date = date("Y-m-d H:i:s");
-                    $week = date("W", strtotime($date)) - 33;
-                    $year = date("Y", strtotime($date));
-                    for($i = 0; $i<53; $i++){
-                        $monday = new DateTime;
-                        $sunday = new DateTime;
-                        $monday->setISODate($year, $i+33, 1);
-                        $sunday->setISODate($year, $i+33, 5);
-                        echo '<option style="display: flex; align-items: center; justify-content: center;" value="'.($i+33).'"'.(($i==$week)?'selected':'').'><center>'.date_format($monday, 'Y-m-d').' - '.date_format($sunday, 'Y-m-d').'</center></option>';
-                    }
-                    ?>
-                </select>
-            </label>
             <div class="contenthead">
                 <a class="basebutton"  href="today.php">Aujourd'hui</a>
             </div>
@@ -141,7 +157,7 @@
     if(width<height){
         width = height;
     }
-    div.innerHTML = `<img class="edt" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=5&idPianoDay=0%2C1%2C2%2C3%2C4&idTree=<?=$val?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
+    div.innerHTML = `<img class="edt" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= generateIdentifier() ?>&projectId=3&idPianoWeek=<?= $week ?>&idPianoDay=0%2C1%2C2%2C3%2C4&idTree=<?= groupeID() ?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
 </script>
 <footer class="center">
     <p>Réalisé par <a href="https://marcvirgili.fr" target="_blank">Marc Virgili</a> & <a href="https://lykos.vortexdev.fr/" target="_blank">LyKøs</a></p>
