@@ -19,6 +19,9 @@
     function groupeID(){
         if(isset($_POST['tpGrp'])){
             switch($_POST['tdGrp']){
+                case 0:
+                    $val = "37172%2C37171%2C31260%2C31223%2C69178%2C31339";
+                    break;
                 case 1:
                     $val = "37171%2C31260%2C31223%2C69178%2C31339";
                     break;
@@ -27,6 +30,9 @@
                     break;
             }
             switch($_POST['tpGrp']){
+                case 0:
+                    $val .= "%2C50166%2C50167%2C26013%2C34655";
+                    break;
                 case 1:
                     $val .= "%2C50166";
                     break;
@@ -44,6 +50,7 @@
         else{
             $val = "37171%2C37172%2C50166%2C50167%2C26013%2C34655%2C31260%2C31223%2C69178%2C31339";
         }
+        $_COOKIE['grp'] = $val;
         return $val;
     }
     function generateIdentifier(){
@@ -109,12 +116,14 @@
                 </label>
             <label for="tdGrp">TD
             <select name="tdGrp">
+                <option value="0" <?php if(!isset($_POST['tdGrp'])){echo'selected';} ?>></option>
                 <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Grp 1</option>
                 <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Grp 2</option>
             </select>
             </label>
             <label for="tpGrp">TP
             <select name="tpGrp">
+                <option value="0" <?php if(!isset($_POST['tpGrp'])){echo'selected';} ?>></option>
                 <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Grp 1</option>
                 <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Grp 2</option>
                 <option value="3" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 3){echo'selected';} ?>> Grp 3</option>
