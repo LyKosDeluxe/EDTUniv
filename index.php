@@ -140,6 +140,7 @@
                 <p style="margin-left: 35px;"><i><?php if(isset($_POST['tdGrp'])){ ?> TD Groupe <?= $_POST['tdGrp'] ?> </i>|<i> TP Groupe <?= $_POST['tpGrp'] ?> <?php } ?></i></p>
             </div>
             <div class="contenthead">
+                <a class="basebutton" href="<?= "http://www.univ-orleans.fr/EDTWeb/export?project=2022-2023".join(array_map(fn($value): string => "&resources=" . $value, explode("%2C", groupeID())))."&type=ical"?>">Ouvrir le fichier ical</a>
                 <a class="basebutton"  href="today.php">Aujourd'hui</a>
             </div>
         </div>
