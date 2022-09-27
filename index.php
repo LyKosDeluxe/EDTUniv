@@ -87,15 +87,39 @@
                     $date = date("Y-m-d H:i:s");
                     $week = date("W", strtotime($date));
                     $year = date("Y", strtotime($date));
-                    echo '<input onchange="this.form.submit()" value="'.(
-                        !isset($_POST['week'])?
-                        $year.'-W'.(
-                            strlen($week)<2?
-                            '0'+$week
-                            :
-                            $week
-                        ):
-                        $_POST['week']).'" type="week" name="week" id="camp-week" min="'.$year.'-W33" max="'.($year+1).'-W30" required>';
+                    if(isset($_SERVER['HTTP_USER_AGENT'])){
+                        $agent = $_SERVER['HTTP_USER_AGENT'];
+                    }
+                    if(strlen(strstr($agent,"Chrome")) > 0){
+                        $browser = 'Chrome';
+                    }
+                    if($browser!='Chrome'){
+                        echo '<select style="text-align-last: center;" name="semaine">';
+                        
+                        date_default_timezone_set('Europe/Paris');
+                        $date = date("Y-m-d H:i:s");
+                        $week = date("W", strtotime($date)) - 33;
+                        $year = date("Y", strtotime($date));
+                        for($i = 0; $i<53; $i++){
+                            $monday = new DateTime;
+                            $sunday = new DateTime;
+                            $monday->setISODate($year, $i+33, 1);
+                            $sunday->setISODate($year, $i+33, 5);
+                            echo '<option style="display: flex; align-items: center; justify-content: center;" value="'.($i+33).'"'.(($i==$week)?'selected':'').'><center>'.date_format($monday, 'Y-m-d').' - '.date_format($sunday, 'Y-m-d').'</center></option>';
+                        }
+                    echo '</select>';
+                    }
+                    else{
+                        echo '<input onchange="this.form.submit()" value="'.(
+                            !isset($_POST['week'])?
+                            $year.'-W'.(
+                                strlen($week)<2?
+                                '0'+$week
+                                :
+                                $week
+                            ):
+                        $_POST['week']).'" type="week" name="week" id="camp-week" min="'.$year.'-W33" max="'.($year+1).'-W30" required>';    
+                    }
                     if($week < 33){
                         $year -= 1 ;
                     }
