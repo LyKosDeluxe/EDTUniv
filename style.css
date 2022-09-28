@@ -72,7 +72,7 @@ html, body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 1%;
 }
 
 select {
@@ -90,6 +90,28 @@ select {
     border-color: #07a89e;
     -webkit-appearance: none;
     border-radius: 3px;
+}
+
+input[type="week"]{
+    width: 96px;
+    height: 30px;
+    padding: 6px 2px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    background: #e2e2e2;
+    border-width: 0px;
+    font-family: 'Red Hat Display', sans-serif;
+    color: rgb(0, 0, 0);
+    outline: none;
+    border-left: 3px solid;
+    border-color: #07a89e;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+::selection {
+    background: #07a89e;
+    color:#fff;
 }
 
 hr {
@@ -269,10 +291,6 @@ p {
     }
 }
 
-form {
-    margin-left: 10px;
-}
-
 ::-webkit-scrollbar {
     width: 13px;
     height: 12px;
@@ -338,6 +356,18 @@ form {
         padding: 15px;
         text-decoration: none;
     }
+}
+
+a{
+    transition: color, text-decoration;
+    transition-duration: 0.3s;
+}
+
+a:hover{
+    color:#07a89e;
+    text-decoration:none;
+    transition: color, text-decoration;
+    transition-duration: 0.3s;
 }
 
 
