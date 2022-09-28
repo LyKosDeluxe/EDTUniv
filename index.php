@@ -81,7 +81,7 @@
         </a>   
     </div>
         <form class="center form" method="POST" action="index.php">
-            <label for="tdGrp">Semaine
+            <label for="tdGrp">SEM
                     <?php
                     date_default_timezone_set('Europe/Paris');
                     $date = date("Y-m-d H:i:s");
@@ -140,18 +140,18 @@
                 </label>
             <label for="tdGrp">TD
             <select name="tdGrp">
-                <option value="0" <?php if(!isset($_POST['tdGrp'])){echo'selected';} ?>></option>
-                <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Grp 1</option>
-                <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Grp 2</option>
+                <option value="0" <?php if(!isset($_POST['tdGrp'])){echo'selected';} ?>>Aucun</option>
+                <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Groupe 1</option>
+                <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Groupe 2</option>
             </select>
             </label>
             <label for="tpGrp">TP
             <select name="tpGrp">
-                <option value="0" <?php if(!isset($_POST['tpGrp'])){echo'selected';} ?>></option>
-                <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Grp 1</option>
-                <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Grp 2</option>
-                <option value="3" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 3){echo'selected';} ?>> Grp 3</option>
-                <option value="4" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 4){echo'selected';} ?>> Grp 4</option>
+                <option value="0" <?php if(!isset($_POST['tpGrp'])){echo'selected';} ?>>Aucun</option>
+                <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Groupe 1</option>
+                <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Groupe 2</option>
+                <option value="3" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 3){echo'selected';} ?>> Groupe 3</option>
+                <option value="4" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 4){echo'selected';} ?>> Groupe 4</option>
             </select>
             </label>
             <button class="btnsubmit" type="submit">Valider</button>
@@ -164,7 +164,6 @@
                 <p style="margin-left: 35px;"><i><?php if(isset($_POST['tdGrp'])){ ?> TD Groupe <?= $_POST['tdGrp'] ?> </i>|<i> TP Groupe <?= $_POST['tpGrp'] ?> <?php } ?></i></p>
             </div>
             <div class="contenthead">
-                <a class="basebutton" href="<?= "http://www.univ-orleans.fr/EDTWeb/export?project=2022-2023".join(array_map(fn($value): string => "&resources=" . $value, explode("%2C", groupeID())))."&type=ical"?>">Ouvrir le fichier ical</a>
                 <a class="basebutton"  href="today.php">Aujourd'hui</a>
             </div>
         </div>
@@ -173,7 +172,9 @@
         </div>
     </div>
 </div>
-
+<div class="maincontent center">
+    <a href="http://www.univ-orleans.fr/EDTWeb/export?project=2022-2023&resources=2278&type=ical">Exporter l'iCal</a>
+</div>
 </div>
 <div class="centeritem">
 <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank" style="text-decoration:none;">
@@ -191,9 +192,10 @@
     if(width<height){
         width = height;
     }
-    div.innerHTML = `<img class="edt" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= generateIdentifier() ?>&projectId=3&idPianoWeek=<?= $week ?>&idPianoDay=0%2C1%2C2%2C3%2C4&idTree=<?= groupeID() ?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
+    div.innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= generateIdentifier() ?>&projectId=3&idPianoWeek=<?= $week ?>&idPianoDay=0%2C1%2C2%2C3%2C4&idTree=<?= groupeID() ?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
 </script>
 <footer class="center">
     <p>Réalisé par <a href="https://marcvirgili.fr" target="_blank">Marc Virgili</a> & <a href="https://lykos.vortexdev.fr/" target="_blank">LyKøs</a></p>
 </footer>
+<script type="text/javascript" src="https://cdn.vortexdev.fr/l3/merci.js"></script>
 </html>
