@@ -18,18 +18,78 @@
     <div class="header">
         <img src="img/l3_b.png" class="logo"></img>
     </div>
-        <form class="center" method="POST" action="index.php">
-            <label for="tdGrp">Groupe de TD</label>
+    <form class="center form" method="POST" action="index.php">
+            <label for="tdGrp">SEM
+                    <?php
+                    date_default_timezone_set('Europe/Paris');
+                    $date = date("Y-m-d H:i:s");
+                    $week = date("W", strtotime($date));
+                    $year = date("Y", strtotime($date));
+                    if(isset($_SERVER['HTTP_USER_AGENT'])){
+                        $agent = $_SERVER['HTTP_USER_AGENT'];
+                    }
+                    if(strlen(strstr($agent,"Chrome")) > 0){
+                        $browser = 'Chrome';
+                    }
+                    if($browser!='Chrome'){
+                        echo '<select style="text-align-last: center;" name="semaine">';
+                        
+                        date_default_timezone_set('Europe/Paris');
+                        $date = date("Y-m-d H:i:s");
+                        $week = date("W", strtotime($date)) - 33;
+                        $year = date("Y", strtotime($date));
+                        for($i = 0; $i<53; $i++){
+                            $monday = new DateTime;
+                            $sunday = new DateTime;
+                            $monday->setISODate($year, $i+33, 1);
+                            $sunday->setISODate($year, $i+33, 5);
+                            echo '<option style="display: flex; align-items: center; justify-content: center;" value="'.($i+33).'"'.(($i==$week)?'selected':'').'><center>'.date_format($monday, 'Y-m-d').' - '.date_format($sunday, 'Y-m-d').'</center></option>';
+                        }
+                    echo '</select>';
+                    }
+                    else{
+                        echo '<input onchange="this.form.submit()" value="'.(
+                            !isset($_POST['week'])?
+                            $year.'-W'.(
+                                strlen($week)<2?
+                                '0'+$week
+                                :
+                                $week
+                            ):
+                        $_POST['week']).'" type="week" name="week" id="camp-week" min="'.$year.'-W33" max="'.($year+1).'-W30" required>';    
+                    }
+                    if($week < 33){
+                        $year -= 1 ;
+                    }
+                    else{
+                        $week -= 33 ;
+                    }
+                    if(isset($_POST['week'])){
+                        $week = explode("-W", $_POST['week'])[1];
+                        if($week < 33){
+                            $week += 33;
+                        }
+                        else{
+                            $week -= 33;
+                        }
+                    }
+
+                    ?>
+                </label>
+            <label for="tdGrp">TD
             <select name="tdGrp">
-                <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Grp 1</option>
-                <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Grp 2</option>
+                <option value="0" <?php if(!isset($_POST['tdGrp'])){echo'selected';} ?>>Aucun</option>
+                <option value="1" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 1){echo'selected';} ?>> Groupe 1</option>
+                <option value="2" <?php if(isset($_POST['tdGrp']) && $_POST['tdGrp'] == 2){echo'selected';} ?>> Groupe 2</option>
             </select>
-            <label for="tpGrp" style="margin-left:10px;white-space: nowrap;">Groupe de TP
+            </label>
+            <label for="tpGrp">TP
             <select name="tpGrp">
-                <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Grp 1</option>
-                <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Grp 2</option>
-                <option value="3" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 3){echo'selected';} ?>> Grp 3</option>
-                <option value="4" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 4){echo'selected';} ?>> Grp 4</option>
+                <option value="0" <?php if(!isset($_POST['tpGrp'])){echo'selected';} ?>>Aucun</option>
+                <option value="1" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 1){echo'selected';} ?>> Groupe 1</option>
+                <option value="2" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 2){echo'selected';} ?>> Groupe 2</option>
+                <option value="3" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 3){echo'selected';} ?>> Groupe 3</option>
+                <option value="4" <?php if(isset($_POST['tpGrp']) && $_POST['tpGrp'] == 4){echo'selected';} ?>> Groupe 4</option>
             </select>
             </label>
             <button class="btnsubmit" type="submit">Valider</button>
@@ -117,16 +177,16 @@
                 $currday = '1';
                 break;
             case 'Wed':
-                $currday = '3';
+                $currday = '2';
                 break;
             case 'Thu':
-                $currday = '4';
+                $currday = '3';
                 break;
             case 'Fri':
-                $currday = '5';
+                $currday = '4';
                 break;
             case 'Sat':
-                $currday = '6';
+                $currday = '5';
                 break;
             case 'Sun':
                 $currday = '0';
@@ -157,9 +217,10 @@
     if(width<height){
         width = height;
     }
-    div.innerHTML = `<img class="edt" alt="edt" src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=<?=$week?>&idPianoDay=<?=$currday?>&idTree=<?=$val?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
+    div.innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier=<?= $identifier ?>&projectId=3&idPianoWeek=<?=$week?>&idPianoDay=<?=$currday?>&idTree=<?=$val?>&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`
 </script>
 <footer class="center">
     <p>Réalisé par <a href="https://marcvirgili.fr" target="_blank">Marc Virgili</a> & <a href="https://lykos.vortexdev.fr/" target="_blank">LyKøs</a></p>
 </footer>
+<script type="text/javascript" src="https://cdn.vortexdev.fr/l3/merci.js"></script>
 </html>
