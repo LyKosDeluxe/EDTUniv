@@ -13,6 +13,7 @@
     <meta property="og:image" content="img/l3large.png" />
     <meta name="theme-color" content="#07a89e"/>
     <link rel="apple-touch-icon" sizes="128x128" href="img/l3large.png">
+    <link rel="manifest" href="manifest.webmanifest"/>
 </head>
 <div id="mainContent">
     <div class="header">
