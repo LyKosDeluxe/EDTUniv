@@ -4,6 +4,7 @@ require '../vendor/autoload.php';
 
 use app\core\Controllers;
 use app\core\Router;
+use app\stockage\CookieStockage;
 
 date_default_timezone_set('Europe/Paris');
 
@@ -17,6 +18,10 @@ try {
     $router->map('GET', '/logout', function () use ($controllers){ echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->logout();}, 'logout');
     $router->map('GET', '/edt/today', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->today();}, 'today');
     $router->map('GET', '/edt', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->main();}, 'edt');
+    $router->map('GET', '/pwa', function () use ($controllers) {
+        CookieStockage::basicSet('pwa', true);
+        header('Location: /');
+    }, 'pwa');
 } catch (Exception $e) {
     var_dump($e->getMessage());
 }
