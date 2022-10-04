@@ -51,7 +51,6 @@ class SecurityController extends Controller
             dump($e);
         }
     }
-
     public function logout() : void {
         try {
             if(Auth::isAuth()) Auth::logout();
