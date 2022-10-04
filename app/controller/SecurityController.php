@@ -28,6 +28,7 @@ class SecurityController extends Controller
         return $this->render('security.html.twig',[
                 'android' => OperatingSystem::isAndroid(),
                 'iphone' => OperatingSystem::isApple(),
+                'pwa' => OperatingSystem::isPwa()
             ]
         );
     }

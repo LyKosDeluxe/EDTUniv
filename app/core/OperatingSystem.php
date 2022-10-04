@@ -20,9 +20,7 @@ class OperatingSystem
         /**
          * Check if user already use PWA.
          */
-        if(isset($_GET['PWA']))
-            $android = false;
-
+        if(isset($_GET['PWA'])) $android = false;
         return $android;
     }
     public static function isApple()
@@ -35,6 +33,11 @@ class OperatingSystem
         if($ipad OR $iphone or $ipod) $apple = true;
         if(isset($_GET['PWA'])) $apple = false;
         return $apple;
+    }
+
+    public static function isPwa()
+    {
+        return str_contains($_SERVER['REQUEST_URI'], "pwa");
     }
 
 }

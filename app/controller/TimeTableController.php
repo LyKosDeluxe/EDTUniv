@@ -63,7 +63,8 @@ class TimeTableController extends Controller
             'username' => Auth::getUsername(),
             'weekVal' => $weekVal,
             'options' => $this->fetchOptions(),
-            'chrome' => OperatingSystem::isChrome()
+            'chrome' => OperatingSystem::isChrome(),
+            'pwa' => OperatingSystem::isPwa()
         ]);
     }
 
@@ -113,6 +114,7 @@ class TimeTableController extends Controller
             'iphone' => OperatingSystem::isApple(),
             'today' => $today,
             'year' => $year,
+            'pwa' => OperatingSystem::isPwa()
         ]);
     }
 
