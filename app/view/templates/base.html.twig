@@ -27,7 +27,7 @@
     {% block container %}{% endblock %}
 
 
-{% IF iphone == true and pwa == false %}
+{% if iphone == true and pwa == false %}
     <br>
 <div class="centeritem">
     <div class="cards">
@@ -39,7 +39,7 @@
                 <p style="margin:0px;">Installez <l3>L3_</l3> sur votre appareil !<br>Cliquez sur <img style="height:20px;transform: translateY(6px);" src="/assets/img/share.svg"/> puis sur <img style="height:18px;transform: translateY(4px);" src="/assets/img/add-ios.svg"/></p>
             </div>
         </div></div>
-{% ELSEIF android == true and pwa == false %}
+{% elseif android == true and pwa == false %}
         <div class="centeritem">
         <div class="cards">
             <div style="display: flex;flex-wrap: nowrap;flex-direction: row;justify-content: space-between;align-items: center;gap: 15px;">
@@ -50,7 +50,7 @@
                     <p style="margin:0px;">Installez <l3>L3_</l3> sur votre appareil !<br>Cliquez sur <img style="height:20px;transform: translateY(4px);" src="/assets/img/androiddot.svg"/> puis sur <img style="height:18px;transform: translateY(2px);" src="/assets/img/androidistall.svg"/></p>
                 </div>
             </div></div>
-{% ENDIF %}
+{% endif %}
         </div>
 
 
