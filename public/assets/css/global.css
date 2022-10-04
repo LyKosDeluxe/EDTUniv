@@ -1,0 +1,395 @@
+/* Style et Logos par @lykosisback | lykos.vortexdev.fr et par Marc Virgili | marcvirgili.fr */
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400&family=Reem+Kufi&display=swap');
+
+@font-face {
+    src: url(https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap);
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
+
+@font-face {
+    src: url(https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap);
+    font-family: 'Reem Kufi', sans-serif;
+}
+
+.logo {
+    height: 24px;
+    margin: 14px 12px 0px 12px;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    border: 3px solid #07a89e;
+    margin-right: 25%;
+    margin-left: 25%;
+    text-align: center;
+}
+.loginHeader {
+    margin-top: 7%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.basebutton.logout {
+    background-color: #c23616;
+    border-color: #c23616;
+}
+
+.basebutton.logout:hover{
+    color: #e84118;
+    border-color: #c23616;
+}
+.login form  {
+    flex-direction: column;
+}
+
+.edt {
+    width: 95%;
+    animation: cardpopup 0.6s cubic-bezier(0, 0.04, 0, 1.13);
+    filter: hue-rotate(46deg) saturate(0.7);
+}
+
+@media (max-width: 480px) {
+    .edt {
+        animation: cardpopupmobile 0.6s cubic-bezier(0, 0.04, 0, 1.13);
+        filter: hue-rotate(46deg) saturate(0.7);
+        margin-left: -5px;
+    }
+}
+
+div.hand:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes cardpopup {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes cardpopupmobile {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+html,
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1%;
+
+}
+
+input[type='text'] {
+    height: 30px;
+    padding: 6px 2px;
+    margin: 4px 0;
+    min-width: -webkit-fill-available;
+    box-sizing: border-box;
+    background: #e2e2e2;
+    border-width: 0px;
+    text-align: center;
+    font-family: 'Red Hat Display', sans-serif;
+    color: rgb(0, 0, 0);
+    outline: none;
+    border-left: 3px solid;
+    border-color: #07a89e;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+select {
+    height: 30px;
+    padding: 6px 2px;
+    margin: 4px 0;
+    min-width: -webkit-fill-available;
+    box-sizing: border-box;
+    background: #e2e2e2;
+    border-width: 0px;
+    text-align: center;
+    font-family: 'Red Hat Display', sans-serif;
+    color: rgb(0, 0, 0);
+    outline: none;
+    border-left: 3px solid;
+    border-color: #07a89e;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+select.week {
+    min-width: fit-content;
+}
+
+hr {
+    width: 250px;
+    height: 2px;
+    -webkit-appearance: none;
+    border-radius: 6px;
+    border-style: none;
+    background-color: rgb(92, 92, 92);
+    margin-bottom: 25px;
+}
+
+@media (max-width: 480px) {
+    hr {
+        width: 95%;
+    }
+}
+
+.header {
+    height: 52px;
+    width: auto;
+    background: #07a89e;
+    margin-bottom: 5px;
+    line-height: 65px;
+    color: rgb(255, 255, 255);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    box-shadow: inset;
+    box-shadow: #000 0px -5px 12px;
+    z-index: 2;
+}
+
+.center {
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .center {
+        text-align: center;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    select {
+        font-size: 11px;
+    }
+
+}
+
+.btnsubmit {
+    padding: 4px;
+    margin: 8px 0;
+
+    cursor: pointer;
+    width: auto;
+    color: #ffffff;
+    background-color: #07a89e;
+    transition-property: background-color, border, color;
+    transition-duration: 0.5s;
+    font-family: 'Red Hat Display', sans-serif;
+    border-style: solid;
+    border-color: #07a89e;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+.btnsubmit:hover {
+    background-color: #38c9bf00;
+    transition-property: background-color, border, color;
+    transition-duration: 0.3s;
+    border-style: solid;
+    color: #07a89e;
+    border-color: #07a89e;
+}
+
+.maincontent {
+    margin: 12px;
+}
+
+@media (max-width: 480px) {
+
+    .maincontent {
+        margin: 5px;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+.basebutton {
+    margin: 15px 0px 10px 0px;
+    cursor: pointer;
+    width: auto;
+    color: #ffffff;
+    border-radius: 3px;
+    background-color: #07a89e;
+    padding: 8px;
+    transition-property: background-color, border, color;
+    transition-duration: 0.5s;
+    font-family: 'Red Hat Display', sans-serif;
+    border-style: solid;
+    border-color: #07a89e;
+    text-decoration: none;
+
+}
+
+.basebutton:hover {
+    background-color: #38c9bf00;
+    transition-property: background-color, border, color;
+    transition-duration: 0.3s;
+    border-style: solid;
+    border-width: 3px;
+    color: #07a89e;
+    border-color: #07a89e;
+}
+
+.contenthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.contenthead>* {
+    margin: 0px;
+}
+
+@media (max-width: 480px) {
+    .basebutton {
+        font-size: 11px;
+    }
+}
+
+input[type="week"]{
+    padding: 0px 10px 0px 10px;
+    height: 30px;
+    background: #e2e2e2;
+    border-width: 0px;
+    font-family: 'Red Hat Display', sans-serif;
+    border-left: 3px solid;
+    border-color: #07a89e;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+::selection {
+    background: #07a89e;
+    color:#fff;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+    height: 12px;
+    background-color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aaaaaa;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #046d66;
+}
+
+::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+    background: #07a89e;
+}
+
+.red {
+    color: #ff3636;
+}
+
+.centeritem {
+    display: flex;
+    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cards {
+    background: rgb(225 225 225);
+    color: #000000;
+    width: auto;
+    min-width: auto;
+    height: auto;
+    min-height: auto;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 15px;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+
+    .cards {
+        background: rgb(225 225 225);
+        color: #000000;
+        width: auto;
+        min-width: auto;
+        font-size: 11px;
+        height: auto;
+        min-height: auto;
+        border-radius: 16px;
+        margin: 9px;
+        text-align: left;
+        padding: 15px;
+        text-decoration: none;
+    }
+}
+
+
+/*     __        __ __
+      / /  __ __/ //_/__  ___
+     / /__/ // / ,< / _ \(_-<
+    /____/\_, /_/|_|\___/___/
+         /___/
+         pas de quoi s'en venter. (cc)
+*/

@@ -1,0 +1,14 @@
+{
+    "name": "albanweill/emplois-du-temps_univ-orleans",
+    "autoload": {
+        "psr-4": {
+            "Albanweill\\EmploisDuTempsUnivOrleans\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ALbanW"
+        }
+    ],
+    "require": {}
+}

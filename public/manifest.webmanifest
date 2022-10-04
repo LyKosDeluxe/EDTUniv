@@ -1,0 +1,17 @@
+{
+    "background_color": "#07a89e",
+    "description": "Emploi du Temps pour les L3 Miage de l'Université d'Orléans.",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "/assets/img/l3large.png",
+        "sizes": "192x192",
+        "type": "/assets/image/png"
+      }
+    ],
+    "name": "L3_",
+    "short_name": "L3_",
+    "start_url": "index.php?PWA",
+    "orientation": "portrait"
+
+  }
