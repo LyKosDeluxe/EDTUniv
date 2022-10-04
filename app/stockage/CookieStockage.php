@@ -24,19 +24,15 @@ class CookieStockage implements FacadeStockage
     public static function set(array... $tab) : void
     {
 
-        $time = time();
-        $time += 3600 * 1000 * 24 * 365 * 10;
         foreach ($tab as $v)
         {
-            setcookie($v[0][0], $v[0][1], $time);
-            setcookie($v[1][0], $v[1][1], $time);
+            setcookie($v[0][0], $v[0][1], time() + 100000000000000);
+            setcookie($v[1][0], $v[1][1], time() + 100000000000000);
         }
     }
     public static function basicSet(String $key, String $value) : void
     {
-        $time = time();
-        $time += 3600 * 1000 * 24 * 365 * 10;
-        setcookie($key, $value, $time);
+        setcookie($key, $value, time() + 100000000000000);
     }
 
     public static function type(): TypeStockage
