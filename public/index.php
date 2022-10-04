@@ -7,8 +7,8 @@ use app\core\Router;
 
 date_default_timezone_set('Europe/Paris');
 
-$router = new AltoRouter();
 $controllers = new Controllers();
+$router = new AltoRouter();
 
 try {
 
@@ -17,7 +17,6 @@ try {
     $router->map('GET', '/logout', function () use ($controllers){ echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->logout();}, 'logout');
     $router->map('GET', '/edt/today', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->today();}, 'today');
     $router->map('GET', '/edt', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->main();}, 'edt');
-
 
 } catch (Exception $e) {
     var_dump($e->getMessage());
