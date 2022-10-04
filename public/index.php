@@ -18,6 +18,13 @@ try {
     $router->map('GET', '/edt/today', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->today();}, 'today');
     $router->map('GET', '/edt', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->main();}, 'edt');
 
+
+    $router->map('GET', '/pwa', function () use ($controllers) {echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->main();}, 'home_pwa');
+    $router->map('POST', '/pwa', function () use ($controllers) {echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->login();}, 'login_pwa');
+    $router->map('GET', '/pwa/logout', function () use ($controllers){ echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->logout();}, 'logout_pwa');
+    $router->map('GET', '/pwa/edt/today', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->today();}, 'today_pwa');
+    $router->map('GET', '/pwa/edt', function () use ($controllers) {echo $controllers->getControllers()[Controllers::TIMETABLE_CONTROLLER]->main();}, 'edt_pwa');
+
 } catch (Exception $e) {
     var_dump($e->getMessage());
 }
