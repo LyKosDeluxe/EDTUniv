@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="app\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/api" isTestSource="false" packagePrefix="app\api\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/core" isTestSource="false" packagePrefix="app\core\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/exception" isTestSource="false" packagePrefix="app\exception\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/model" isTestSource="false" packagePrefix="app\model\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/repository" isTestSource="false" packagePrefix="app\repository\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/view" isTestSource="false" packagePrefix="app\view\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="merci" level="application" />
   </component>
 </module>

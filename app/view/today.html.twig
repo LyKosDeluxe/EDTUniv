@@ -1,0 +1,46 @@
+{% extends '/templates/base.html.twig' %}
+{% block container %}
+    <div class="maincontent">
+        <div class="contenthead">
+            <div>
+                <h1 style="font-size: 22px;margin-bottom: 0px">📅 Aujourd'hui :</h1>
+                <p style="margin-left: 35px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
+
+            </div>
+            <div class="contenthead">
+                <a class="basebutton" href="/edt">Retour</a>
+                <a class="basebutton logout" href="/logout">Déconnexion</a>
+            </div>
+        </div>
+        <div class="center" id="edtContainer">
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascript %}
+<script type="application/javascript">
+    function loadEdt(week){
+    if(week.toString().includes('W'))
+{
+    week = week.toString().split('W')[1];
+}
+    if(week < 33) {
+    //hein ?
+} else {
+    week -=33;
+}
+
+    console.log('Using week ='+ week);
+
+    var height = document.documentElement.clientHeight;
+    var width = document.documentElement.clientWidth;
+    if(width<height) width = height;
+    document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay={{ today }}&idTree={{ groupId }}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
+    }
+
+    window.onload = loadEdt({{ week }});
+
+
+</script>
+{% endblock %}

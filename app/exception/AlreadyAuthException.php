@@ -2,7 +2,7 @@
 
 namespace app\exception;
 
-class AlreadyAuthException
+class AlreadyAuthException extends \Exception
 {
 
 }

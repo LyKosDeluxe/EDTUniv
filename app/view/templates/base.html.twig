@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="sid-plesk">
+<head>
+    <title>Emploi Du Temps | L3 Miage</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.5, minimum-scale=0.5">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta property="og:site_name" content="L3 Miage | Orléans">
+    <meta name="description" content="Voici l'emploi du temps des L3 Miage d'Orléans">
+    <link href="/assets/img/l3_.png" rel="shortcut icon">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <meta property="og:image" content="/assets/img/l3large.png" />
+    <meta name="theme-color" content="#07a89e"/>
+    <link rel="apple-touch-icon" sizes="128x128" href="/assets/img/l3large.png">
+    <link rel="manifest" href="manifest.webmanifest"/>
+</head>
+<body>
+
+<div id="mainContent">
+    <div class="header">
+        <a href="/">
+            <img alt="logo" src="/assets/img/l3_b.png" class="logo"></img>
+        </a>
+    </div>
+
+    {% block container %}{% endblock %}
+
+
+{% if android == true %}
+    <br>
+<div class="centeritem">
+    <div class="cards">
+        <div style="display: flex;flex-wrap: nowrap;flex-direction: row;justify-content: space-between;align-items: center;gap: 15px;">
+            <div>
+                <img style="border-radius:8px;height:42px;transform: translateY(2px);" src="/assets/img/l3large.png"></img>
+            </div>
+            <div>
+                <p style="margin:0px;">Installez <l3>L3_</l3> sur votre appareil !<br>Cliquez sur <img style="height:20px;transform: translateY(6px);" src="/assets/img/share.svg"/> puis sur <img style="height:18px;transform: translateY(4px);" src="/assets/img/add-ios.svg"/></p>
+            </div>
+        </div></div>
+{% elseif iphone == true %}
+        <div class="centeritem">
+        <div class="cards">
+            <div style="display: flex;flex-wrap: nowrap;flex-direction: row;justify-content: space-between;align-items: center;gap: 15px;">
+                <div>
+                    <img style="border-radius:8px;height:42px;transform: translateY(2px);" src="/assets/img/l3large.png"></img>
+                </div>
+                <div>
+                    <p style="margin:0px;">Installez <l3>L3_</l3> sur votre appareil !<br>Cliquez sur <img style="height:20px;transform: translateY(4px);" src="/assets/img/androiddot.svg"/> puis sur <img style="height:18px;transform: translateY(2px);" src="/assets/img/androidistall.svg"/></p>
+                </div>
+            </div></div>
+{% endif %}
+        </div>
+
+
+    <footer style="margin: 3%;" class="center">
+        <div class="centeritem">
+            <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank" style="text-decoration:none;">
+                <div class="cards">
+                    Tu souhaites nous aider ? Viens soumettre tes idées et correctifs depuis le <u>GitHub du projet</u> !
+                </div>
+            </a>
+        </div>
+        <p>Réalisé avec ❤ ️par <br>
+            <a href="https://marcvirgili.fr" target="_blank">Marc Virgili (API)</a> - <a href="https://lykos.vortexdev.fr/" target="_blank">LyKøs (Design)</a> - <a href="https://github.com/AlbanWeill" target="_blank">Alban Weill (Backend)</a>
+        </p>
+    </footer>
+    {% block javascript %}{% endblock %}
+    <script type="text/javascript" src="https://cdn.vortexdev.fr/l3/merci.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% extends '/templates/base.html.twig' %}
+{% block container %}
+<div class="maincontent">
+    <div class="contenthead">
+        <div>
+            <h1 style="font-size: 22px;margin-bottom: 0px; display:inline-block;">Heureux de te revoir {{username}} <div style="display:inline-block;" class="hand">👋</div></h1>
+            <p style="margin-left: 35px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
+
+        </div>
+        <div class="contenthead">
+            {% if chrome == 1 %}
+                <input onchange="loadEdt(this.value)" value="{{ weekVal }}" type="week" name="week" id="camp-week" min="'.{{ year }}.'-W33" max="'.{{ year+1 }}.'-W30" required>
+            {% else %}
+                <select onchange="loadEdt(this.value)" class="week" style="text-align-last: center;" name="semaine">
+                    {% for opt in options %}
+                        {% if opt[1] == (week-33) %}
+                            <option style="display: flex; align-items: center; justify-content: center;" selected='selected' value="{{ opt[1] }}">{{ opt[0] }}</option>
+                        {% else %}
+                            <option style="display: flex; align-items: center; justify-content: center;" value="{{ opt[1] }}">{{ opt[0] }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            {% endif %}
+            <a class="basebutton" href="/edt/today">Aujourd'hui</a>
+            <a class="basebutton logout" href="/logout">Déconnexion</a>
+        </div>
+    </div>
+    <div class="center" id="edtContainer">
+
+    </div>
+    </div>
+
+{% endblock %}
+{% block javascript %}
+<script type="application/javascript">
+    function loadEdt(week){
+        if(week.toString().includes('W'))
+        {
+            week = week.toString().split('W')[1];
+        }
+        if(week < 33) {
+            //hein ?
+        } else {
+            week -=33;
+        }
+
+        console.log('Using week ='+ week);
+
+        var height = document.documentElement.clientHeight;
+        var width = document.documentElement.clientWidth;
+        if(width<height) width = height;
+        document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay=0%2C1%2C2%2C3%2C4&idTree={{ groupId }}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
+    }
+
+    window.onload = loadEdt({{ week }});
+
+
+</script>
+{% endblock %}

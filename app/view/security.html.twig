@@ -1,0 +1,34 @@
+{% extends '/templates/base.html.twig' %}
+{% block container %}
+
+    <div class="loginHeader">
+    <div>
+        <h1 style="font-size: 22px;margin-bottom: 0px">🔐 Connexion</h1>
+        <p style="margin-left: 35px;"><i>Afin d'améliorer votre expérience d'utilisation, le système enregistre désormais automatiquement votre groupe.</i></p>
+    </div>
+    </div>
+    <div class="login">
+        <form class="center form" method="POST" action="/">
+            <label for="tdGrp">Votre prénom
+            </label>
+            <input required='required' name="username" placeholder="John Doe" type="text">
+            <label for="tdGrp">Votre groupe de TD
+            </label>
+            <select required='required' name="tdGrp">
+                <option value="0">Aucun</option>
+                <option value="1"> Groupe 1</option>
+                <option value="2"> Groupe 2</option>
+            </select>
+            <label for="tpGrp">Votre groupe de TP
+            </label>
+            <select required='required' name="tpGrp">
+                <option value="0">Aucun</option>
+                <option value="1"> Groupe 1</option>
+                <option value="2"> Groupe 2</option>
+                <option value="3"> Groupe 3</option>
+                <option value="4"> Groupe 4</option>
+            </select>
+            <button class="btnsubmit" name="login" type="submit">Valider</button>
+        </form>
+    </div>
+{% endblock %}

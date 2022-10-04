@@ -2,13 +2,23 @@
     "name": "albanweill/emplois-du-temps_univ-orleans",
     "autoload": {
         "psr-4": {
-            "Albanweill\\EmploisDuTempsUnivOrleans\\": "src/"
+            "app\\": "app/",
+            "app\\core\\": "app/core/",
+            "app\\model\\": "app/model/",
+            "app\\view\\": "app/view/",
+            "app\\repository\\": "app/repository/",
+            "app\\exception\\": "app/exception/",
+            "app\\api\\": "app/api/"
         }
     },
     "authors": [
         {
-            "name": "ALbanW"
+            "name": "AlbanW"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.4",
+        "altorouter/altorouter": "^2.0",
+        "symfony/var-dumper": "^6.1"
+    }
 }

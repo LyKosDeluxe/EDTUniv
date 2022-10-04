@@ -2,10 +2,10 @@
 
 namespace app\controller;
 
-interface Controller
+interface FacadeController
 {
 
-    public function main() : void;
+    public function main() : String;
     public function getName() : String;
 
 }

@@ -2,7 +2,8 @@
 
 namespace app\stockage;
 
-class TypeStockage
+enum TypeStockage
 {
-
+    case TYPE_COOKIE;
+    case TYPE_SESSION;
 }

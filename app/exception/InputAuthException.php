@@ -2,7 +2,7 @@
 
 namespace app\exception;
 
-class InputAuthException
+class InputAuthException extends \Exception
 {
 
 }

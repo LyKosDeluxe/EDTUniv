@@ -2,7 +2,7 @@
 
 namespace app\exception;
 
-class NotAuthException
+class NotAuthException extends \Exception
 {
 
 }

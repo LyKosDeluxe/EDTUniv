@@ -2,7 +2,7 @@
 
 namespace app\stockage;
 
-class CookieStorage implements FacadeStockage
+class CookieStockage implements FacadeStockage
 {
 
     public static function get(String $key) : mixed
@@ -13,6 +13,7 @@ class CookieStorage implements FacadeStockage
     public static function remove(String $key): void
     {
         unset($_COOKIE[$key]);
+        setcookie($key, "", time() - 3600);
     }
 
     public static function exist(String $key): bool
@@ -20,7 +21,15 @@ class CookieStorage implements FacadeStockage
         return isset($_COOKIE[$key]) && !empty($_COOKIE[$key]);
     }
 
-    public static function set(string $key, mixed $value) : void
+    public static function set(array... $tab) : void
+    {
+        foreach ($tab as $v)
+        {
+            setcookie($v[0][0], $v[0][1]);
+            setcookie($v[1][0], $v[1][1]);
+        }
+    }
+    public static function basicSet(String $key, String $value) : void
     {
         setcookie($key, $value);
     }
