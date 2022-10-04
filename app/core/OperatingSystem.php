@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use app\stockage\CookieStockage;
+
 class OperatingSystem
 {
 
@@ -35,9 +37,12 @@ class OperatingSystem
         return $apple;
     }
 
+    /**
+     * @return bool true if user is using pwa
+     */
     public static function isPwa()
     {
-        return str_contains($_SERVER['REQUEST_URI'], "pwa");
+        return CookieStockage::exist('pwa');
     }
 
 }
