@@ -22,8 +22,11 @@ class OperatingSystem
         /**
          * Check if user already use PWA.
          */
-        if(isset($_GET['PWA'])) $android = false;
-        return $android;
+
+        $useAndroid = false;
+        if(isset($_GET['PWA'])) $useAndroid = false;
+        if($android == true) $useAndroid = true;
+        return $useAndroid;
     }
     public static function isApple()
     {
