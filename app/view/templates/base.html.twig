@@ -20,8 +20,10 @@
 <div id="mainContent">
     <div class="header">
         <a href="/">
-            <img alt="logo" src="/assets/img/l3_b.png" class="logo"></img>
+            <img alt="logo" style="float:left; margin-left: 3%;" src="/assets/img/l3_b.png" class="logo"></img>
         </a>
+        {% block nav %}
+        {% endblock %}
     </div>
 
     {% block container %}{% endblock %}
@@ -54,7 +56,7 @@
         </div>
 
 
-    <footer style="margin: 3%;" class="center">
+    <footer style="margin: 5px;" class="center">
         <div class="centeritem helpus">
             <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank" style="text-decoration:none;">
                 <div class="cards">
