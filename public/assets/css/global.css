@@ -23,6 +23,7 @@ Pour faire plaisir à randy
 }
 
 .logo {
+    float: left !important;
     height: 24px;
     margin: 14px 12px 0px 12px;
 }
@@ -57,7 +58,7 @@ Pour faire plaisir à randy
     margin-right: 10%;
 }
 
-.logout{
+.logout {
     position: absolute;
     right: 25px;
 }
@@ -89,9 +90,17 @@ div.hand {
 }
 
 @keyframes shake {
-    0% { transform: rotate(45deg); }
-    50% { transform: rotate(0deg); }
-    100% { transform: rotate(45deg); }
+    0% {
+        transform: rotate(45deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
 }
 
 @keyframes cardpopup {
@@ -265,6 +274,17 @@ hr {
 
 p {
     margin-top: 0;
+}
+
+.header > a {
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-right: 2%;
+    line-height: 52px;
+    color: white;
+    font-family: 'Red Hat Display';
+    text-decoration: none;
 }
 
 .basebutton {
