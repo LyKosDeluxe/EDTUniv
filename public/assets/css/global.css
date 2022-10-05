@@ -18,8 +18,8 @@
 Pour faire plaisir à randy
  */
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .logo {
@@ -30,8 +30,9 @@ Pour faire plaisir à randy
 .error {
     background-color: #c23616;
     height: 5%;
-    color:white;
+    color: white;
 }
+
 .error p {
     font-family: 'Red Hat Display';
     padding-top: 5px;
@@ -48,23 +49,20 @@ Pour faire plaisir à randy
     margin-left: 25%;
     text-align: center;
 }
+
 .loginHeader {
+    margin-bottom: 25px;
     margin-top: 7%;
     margin-left: 25%;
-    margin-right: 25%;
+    margin-right: 10%;
 }
 
-.basebutton.logout {
-    background-color: #c23616;
-    border-color: #c23616;
+.logout{
+    position: absolute;
+    right: 25px;
 }
 
-.basebutton.logout:hover{
-    color: #e84118;
-    border-color: #c23616;
-}
-
-.login form  {
+.login form {
     flex-direction: column;
 }
 
@@ -82,7 +80,7 @@ Pour faire plaisir à randy
     }
 }
 
-div.hand:hover {
+div.hand:active {
     /* Start the shake animation and make the animation last for 0.5 seconds */
     animation: shake 0.5s;
 
@@ -91,17 +89,49 @@ div.hand:hover {
 }
 
 @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
 }
 
 @keyframes cardpopup {
@@ -151,7 +181,7 @@ input[type='text'] {
     height: 30px;
     padding: 6px 2px;
     margin: 4px 0;
-    min-width: -webkit-fill-available;
+    min-width: 150px;
     box-sizing: border-box;
     background: #e2e2e2;
     border-width: 0px;
@@ -169,7 +199,7 @@ select {
     height: 30px;
     padding: 6px 2px;
     margin: 4px 0;
-    min-width: -webkit-fill-available;
+    min-width: 150px;
     box-sizing: border-box;
     background: #e2e2e2;
     border-width: 0px;
@@ -291,6 +321,7 @@ p {
     border-style: solid;
     border-color: #07a89e;
     text-decoration: none;
+    border-width: 3px;
 
 }
 
@@ -322,12 +353,17 @@ p {
     }
 }
 
-input[type="week"]{
-    padding: 0px 10px 0px 10px;
+input[type="week"] {
+    width: 96px;
     height: 30px;
+    padding: 6px 2px;
+    margin: 4px 0;
+    box-sizing: border-box;
     background: #e2e2e2;
     border-width: 0px;
     font-family: 'Red Hat Display', sans-serif;
+    color: rgb(0, 0, 0);
+    outline: none;
     border-left: 3px solid;
     border-color: #07a89e;
     -webkit-appearance: none;
@@ -336,7 +372,7 @@ input[type="week"]{
 
 ::selection {
     background: #07a89e;
-    color:#fff;
+    color: #fff;
 }
 
 ::-webkit-scrollbar {
@@ -365,10 +401,12 @@ input[type="week"]{
 .red {
     color: #ff3636;
 }
+
 .contenthead {
-    margin: 3%;
-    gap: 0.1em;
+    margin: 1%;
+    gap: 1em;
 }
+
 .centeritem {
     display: flex;
     justify-content: space-around;
@@ -396,6 +434,7 @@ input[type="week"]{
         overflow: hidden;
         white-space: normal;
     }
+
     .cards {
         background: rgb(225 225 225);
         color: #000000;

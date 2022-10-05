@@ -6,7 +6,7 @@
       {
         "src": "/assets/img/l3large.png",
         "sizes": "192x192",
-        "type": "/assets/image/png"
+        "type": "image/png"
       }
     ],
     "name": "L3_",
