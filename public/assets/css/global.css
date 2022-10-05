@@ -25,7 +25,7 @@ Pour faire plaisir à randy
 .logo {
     float: left !important;
     height: 24px;
-    margin: 14px 12px 0px 12px;
+    margin-left: 12px;
 }
 
 .error {
@@ -277,11 +277,11 @@ p {
 }
 
 .header > a {
+    height: 52px;
     display: flex;
     align-items: center;
     float: right;
     margin-right: 2%;
-    line-height: 52px;
     color: white;
     font-family: 'Red Hat Display';
     text-decoration: none;
@@ -334,7 +334,7 @@ p {
 }
 
 input[type="week"] {
-    width: 96px;
+    width: 100px;
     height: 30px;
     padding: 6px 2px;
     margin: 4px 0;
