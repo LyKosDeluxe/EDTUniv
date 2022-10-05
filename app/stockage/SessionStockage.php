@@ -2,31 +2,41 @@
 
 namespace app\stockage;
 
-class SessionStockage implements FacadeStockage
+class SessionStockage implements FacadeStockage, FacadeMultiLevelStockage
 {
 
-    public static function get(String $key)
+    public static function get(String $key) : mixed
     {
-        // TODO: Implement get() method.
+        return $_SESSION[$key];
     }
 
     public static function remove(string $key): void
     {
-        // TODO: Implement remove() method.
+        unset($_SESSION[$key]);
     }
 
-    public static function set(string $key, $value)
+    public static function set(array... $arr) : void
     {
-        // TODO: Implement set() method.
+        foreach ($arr as $r)
+        {
+            $_SESSION[$r[0]] = $r[1];
+        }
     }
 
     public static function exist(string $key): bool
     {
-        // TODO: Implement exist() method.
+        return (isset($_SESSION[$key]));
     }
 
     public static function type(): TypeStockage
     {
         return TypeStockage::TYPE_SESSION;
     }
+
+
+    public static function multidimentionnalSet(string $base, mixed $value) : void
+    {
+        $_SESSION[$base][] = $value;
+    }
+
 }

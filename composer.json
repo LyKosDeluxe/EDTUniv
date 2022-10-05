@@ -8,6 +8,7 @@
             "app\\view\\": "app/view/",
             "app\\repository\\": "app/repository/",
             "app\\exception\\": "app/exception/",
+            "app\\service\\": "app/service/",
             "app\\api\\": "app/api/"
         }
     },

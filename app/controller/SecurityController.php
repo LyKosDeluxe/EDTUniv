@@ -48,7 +48,7 @@ class SecurityController extends Controller
             }
         } catch (AlreadyAuthException|InputAuthException $e)
         {
-            dump($e);
+            header('Location: /');
         }
     }
     public function logout() : void {
@@ -57,7 +57,6 @@ class SecurityController extends Controller
             else throw new NotAuthException();
         } catch(NotAuthException $e)
         {
-            dump($e);
         }
         header('Location: /');
     }

@@ -2,7 +2,8 @@
 
 namespace app\core;
 
-class FlashType
-{
+enum FlashType{
 
+    case TYPE_ERROR;
+    case TYPE_SUCCESS;
 }
