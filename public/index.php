@@ -11,8 +11,9 @@ date_default_timezone_set('Europe/Paris');
 $controllers = new Controllers();
 $router = new AltoRouter();
 
+\app\service\FlashService::fetch();
+\app\service\FlashService::removeFlash();
 try {
-
     $router->map('GET', '/', function () use ($controllers) {echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->main();}, 'home');
     $router->map('POST', '/', function () use ($controllers) {echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->login();}, 'login');
     $router->map('GET', '/logout', function () use ($controllers){ echo $controllers->getControllers()[Controllers::SECURITY_CONTROLLER]->logout();}, 'logout');

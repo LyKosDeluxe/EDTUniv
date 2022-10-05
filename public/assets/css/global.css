@@ -14,16 +14,35 @@
     font-family: 'Reem Kufi', sans-serif;
 }
 
+/**
+Pour faire plaisir à randy
+ */
+* {
+    margin:0;
+    padding:0;
+}
+
 .logo {
     height: 24px;
     margin: 14px 12px 0px 12px;
+}
+
+.error {
+    background-color: #c23616;
+    height: 5%;
+    color:white;
+}
+.error p {
+    font-family: 'Red Hat Display';
+    padding-top: 5px;
+    margin-left: 5%;
 }
 
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3%;
+    padding: 5%;
     border: 3px solid #07a89e;
     margin-right: 25%;
     margin-left: 25%;
@@ -44,6 +63,7 @@
     color: #e84118;
     border-color: #c23616;
 }
+
 .login form  {
     flex-direction: column;
 }
@@ -345,7 +365,10 @@ input[type="week"]{
 .red {
     color: #ff3636;
 }
-
+.contenthead {
+    margin: 3%;
+    gap: 0.1em;
+}
 .centeritem {
     display: flex;
     justify-content: space-around;
@@ -368,7 +391,11 @@ input[type="week"]{
 }
 
 @media (max-width: 480px) {
-
+    .centeritem.helpus {
+        display: block;
+        overflow: hidden;
+        white-space: normal;
+    }
     .cards {
         background: rgb(225 225 225);
         color: #000000;
