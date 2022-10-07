@@ -131,7 +131,7 @@ class TimeTableController extends Controller
             $monday->setISODate($year, $i + 33, 1);
             $sunday->setISODate($year, $i + 33, 5);
             $options[] = [
-                'Semaine n°'.$i.': ' . date_format($monday, 'Y-m-d').' - '.date_format($sunday, 'Y-m-d'),
+                'Semaine '.$i.' : ' . date_format($monday, 'd/m').' au '.date_format($sunday, 'd/m'),
                 $i,
             ];
         }

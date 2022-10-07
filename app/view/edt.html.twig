@@ -8,15 +8,17 @@
     <a href="/edt/today">
         <img src="/assets/img/today.svg" style="height : 15px; margin-right:12px"></img> Aujourd'hui
     </a>
+
 {% endblock %}
 {% block container %}
-<div class="maincontent">
+<div id="Title" class="maincontent" style="display: flex;justify-content: space-between;">
     <div class="contenthead">
         <div>
             <h1 style="font-size: 22px;margin-bottom: 0px; display:inline-block;">Heureux de te revoir {{username}} <div style="display:inline-block;" class="hand">👋</div></h1>
-            <p style="margin-left: 35px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
-
+            <p style="margin-left: 15px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
         </div>
+        </div>
+        <div id="Settings" class="maincontent" style="display: flex;gap: 1em;">
         <div class="contenthead">
             {% if chrome == 1 %}
                 <input onchange="loadEdt(this.value)" value="{{ weekVal }}" type="week" name="week" id="camp-week" min="'.{{ year }}.'-W33" max="'.{{ year+1 }}.'-W30" required>
@@ -32,12 +34,25 @@
                 </select>
             {% endif %}
         </div>
+        <div class="contenthead">
+                <a class="basebutton"  href="edt/today">Aujourd'hui</a>
+            </div>
+            </div>
     </div>
     <div class="center" id="edtContainer">
 
     </div>
     </div>
+    <div class="maincontent center">
 
+
+{% if android == true %}
+    <a href="http://www.google.com/calendar/render?cid=http%3A%2F%2Fwww.univ-orleans.fr%2FEDTWeb%2Fexport%3Fproject%3D2022-2023%26resources%3D2278%26type%3Dical">Ajouter à Google Agenda</a>
+{% else %}
+   <a href="http://www.univ-orleans.fr/EDTWeb/export?project=2022-2023&resources=2278&type=ical">Exporter l'iCal</a>
+{% endif %}
+
+</div>
 {% endblock %}
 {% block javascript %}
 <script type="application/javascript">
