@@ -25,6 +25,32 @@
         <a id="color-switch" href="#">
             <img id="icon_switch" class="color-switch" src="/assets/img/dark_mode.svg"></img>
         </a>
+        <script>
+        function getCookie(cookieName) {
+            let cookie = {};
+            document.cookie.split(';').forEach(function(el) {
+                let [key,value] = el.split('=');
+                cookie[key.trim()] = value;
+            })
+            return cookie[cookieName];
+        }
+        var cookie = getCookie("color_theme");
+        var flipflop = false;
+        if(cookie != ""){
+            dark = cookie=="dark";
+            console.log(dark);
+            
+            img = document.getElementById("icon_switch");
+            if(dark){
+                img.src = "/assets/img/light_mode.svg";
+                document.documentElement.classList.add("dark-mode");
+            }
+            else{
+                img.src = "/assets/img/dark_mode.svg";
+                document.documentElement.classList.remove("dark-mode");
+            }
+        }
+        </script>
         {% block nav %}
         {% endblock %}
     </div>
@@ -74,19 +100,20 @@
     </footer>
     {% block javascript %}{% endblock %}
     <script>
-        var flipflop = false;
+        var flipflop = dark;
         button = document.getElementById("color-switch");
         button.addEventListener("click", () => {
-            console.log(document.documentElement.classList);
             document.documentElement.classList.toggle("dark-mode");    
             img = document.getElementById("icon_switch");
             if(flipflop){
                 flipflop = !flipflop;
                 img.src = "/assets/img/dark_mode.svg";
+                document.cookie = "color_theme=light";
             }
             else{
                 flipflop = !flipflop;
                 img.src = "/assets/img/light_mode.svg";
+                document.cookie = "color_theme=dark";
             }
         });
     </script>
