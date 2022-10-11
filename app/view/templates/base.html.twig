@@ -21,7 +21,10 @@
     <div class="header centeritem">
         <a href="/edt">
             <img alt="logo" src="/assets/img/l3_b.png" class="logo"></img>
-        </a>   
+        </a>
+        <a id="color-switch" href="#">
+            <img id="icon_switch" class="color-switch" src="/assets/img/dark_mode.svg"></img>
+        </a>
         {% block nav %}
         {% endblock %}
     </div>
@@ -41,6 +44,7 @@
                 <p style="margin:0px;">Installez <l3>L3_</l3> sur votre appareil !<br>Cliquez sur <img id="icon" style="height:20px;transform: translateY(6px);" src="/assets/img/share.svg"/> puis sur <img id="icon" style="height:18px;transform: translateY(4px);" src="/assets/img/add-ios.svg"/> depuis Safari.</p>
             </div>
         </div></div>
+
 {% elseif android == true and pwa == false %}
         <div class="centeritem">
         <div class="cards">
@@ -69,6 +73,23 @@
         </p>
     </footer>
     {% block javascript %}{% endblock %}
+    <script>
+        var flipflop = false;
+        button = document.getElementById("color-switch");
+        button.addEventListener("click", () => {
+            console.log(document.documentElement.classList);
+            document.documentElement.classList.toggle("dark-mode");    
+            img = document.getElementById("icon_switch");
+            if(flipflop){
+                flipflop = !flipflop;
+                img.src = "/assets/img/dark_mode.svg";
+            }
+            else{
+                flipflop = !flipflop;
+                img.src = "/assets/img/light_mode.svg";
+            }
+        });
+    </script>
     <script type="text/javascript" src="https://cdn.vortexdev.fr/l3/merci.js"></script>
 </div>
 </div>
