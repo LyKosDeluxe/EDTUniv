@@ -26,6 +26,10 @@
             <img id="icon_switch" class="color-switch" src="/assets/img/dark_mode.svg"></img>
         </a>
         <script>
+        console.log(document.cookie);
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("/serviceworker.js");
+        }
         function getCookie(cookieName) {
             let cookie = {};
             document.cookie.split(';').forEach(function(el) {
@@ -38,8 +42,6 @@
         var flipflop = false;
         if(cookie != ""){
             dark = cookie=="dark";
-            console.log(dark);
-            
             img = document.getElementById("icon_switch");
             if(dark){
                 img.src = "/assets/img/light_mode.svg";
@@ -108,12 +110,12 @@
             if(flipflop){
                 flipflop = !flipflop;
                 img.src = "/assets/img/dark_mode.svg";
-                document.cookie = "color_theme=light";
+                document.cookie = "color_theme=light;path=/";
             }
             else{
                 flipflop = !flipflop;
                 img.src = "/assets/img/light_mode.svg";
-                document.cookie = "color_theme=dark";
+                document.cookie = "color_theme=dark;path=/";
             }
         });
     </script>

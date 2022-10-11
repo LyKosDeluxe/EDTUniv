@@ -185,15 +185,12 @@ body {
 
 input[type='text'] {
     height: 30px;
-    padding: 6px 2px;
     margin: 4px 0;
-    min-width: 150px;
+    width: 150px;
     box-sizing: border-box;
     background: #e2e2e2;
     border-width: 0px;
     text-align: center;
-    font-family: 'Red Hat Display', sans-serif;
-    color: rgb(0, 0, 0);
     outline: none;
     border-left: 3px solid;
     border-color: #07a89e;
@@ -203,15 +200,12 @@ input[type='text'] {
 
 select {
     height: 30px;
-    padding: 6px 2px;
     margin: 4px 0;
     min-width: 150px;
     box-sizing: border-box;
     background: #e2e2e2;
     border-width: 0px;
     text-align: center;
-    font-family: 'Red Hat Display', sans-serif;
-    color: rgb(0, 0, 0);
     outline: none;
     border-left: 3px solid;
     border-color: #07a89e;
