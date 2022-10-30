@@ -29,13 +29,9 @@
         {
             week = week.toString().split('W')[1];
         }
-        if(week < 33) {
-            //hein ?
-        } else {
+        if(week > 33) {
             week -=33;
         }
-
-        console.log('Using week ='+ week);
 
         var height = document.documentElement.clientHeight;
         var width = document.documentElement.clientWidth;

@@ -3,7 +3,7 @@
 {% block nav %}
 
     <a href="/logout">
-        <img id="icon" class="logout" src="/assets/img/logout.svg"></img>
+        <img id="icon" alt="logout" class="logout" src="/assets/img/logout.svg"></img>
     </a>
 
 {% endblock %}
@@ -11,7 +11,7 @@
 <div id="Title" class="maincontent" style="display: flex;justify-content: space-between;">
     <div class="contenthead">
         <div>
-            <h1 style="font-size: 22px;margin-bottom: 0px; display:inline-block;">Heureux de te revoir {{username}} <div style="display:inline-block;" class="hand">👋</div></h1>
+            <h1 style="font-size: 22px;margin-bottom: 0px; display:inline-block;">Heureux de te revoir {{username}} <div style="display:inline-block;" class="hand">&#x1f44b;</div></h1>
             <p style="margin-left: 15px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
         </div>
         </div>
@@ -58,13 +58,14 @@
         {
             week = week.toString().split('W')[1];
         }
-        if(week < 33) {
-            //hein ?
-        } else {
+        if(week > 33) {
             week -=33;
         }
-
-        console.log('Using week ='+ week);
+        let today = new Date();
+        let dayName = today.getDay();
+        if(dayName == 6 && dayName == 7){
+            week++;
+        }
 
         var height = document.documentElement.clientHeight;
         var width = document.documentElement.clientWidth;
