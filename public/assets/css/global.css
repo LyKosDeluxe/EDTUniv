@@ -1,9 +1,11 @@
 /* Style et Logos par @lykosisback | lykos.vortexdev.fr et par Marc Virgili | marcvirgili.fr */
 
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400&family=Reem+Kufi&display=swap');
+@import url('emoji.ttf');
 
 @font-face {
     font-family: "emoji";
+    src: url("emoji.ttf");
 }
 
 @font-face {
@@ -21,6 +23,10 @@
 .logo {
     height: 24px;
     margin-left: 12px;
+}
+
+emoji {
+    font-family: emoji;
 }
 
 .error {

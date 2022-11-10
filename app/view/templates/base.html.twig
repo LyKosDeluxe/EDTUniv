@@ -19,38 +19,39 @@
 
 <div id="mainContent">
     <div class="header centeritem">
-        <a id="color-switch" href="#">
-            <img id="icon_switch" class="color-switch" src="/assets/img/dark_mode.svg" alt="Color-switch"></img>
-        </a>
         <a href="/edt">
-            <img alt="logoL3" src="/assets/img/l3_b.png" class="logo"></img>
+            <img alt="logo" src="/assets/img/l3_b.png" class="logo"></img>
+        </a>
+        <a id="color-switch" href="#">
+            <img id="icon_switch" class="color-switch" src="/assets/img/dark_mode.svg"></img>
         </a>
         <script>
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register("/serviceworker.js");
+        console.log(document.cookie);
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("/serviceworker.js");
+        }
+        function getCookie(cookieName) {
+            let cookie = {};
+            document.cookie.split(';').forEach(function(el) {
+                let [key,value] = el.split('=');
+                cookie[key.trim()] = value;
+            })
+            return cookie[cookieName];
+        }
+        var cookie = getCookie("color_theme");
+        var flipflop = false;
+        if(cookie != ""){
+            dark = cookie=="dark";
+            img = document.getElementById("icon_switch");
+            if(dark){
+                img.src = "/assets/img/light_mode.svg";
+                document.documentElement.classList.add("dark-mode");
             }
-            function getCookie(cookieName) {
-                let cookie = {};
-                document.cookie.split(';').forEach(function(el) {
-                    let [key,value] = el.split('=');
-                    cookie[key.trim()] = value;
-                })
-                return cookie[cookieName];
+            else{
+                img.src = "/assets/img/dark_mode.svg";
+                document.documentElement.classList.remove("dark-mode");
             }
-            var cookie = getCookie("color_theme");
-            var flipflop = false;
-            if(cookie != ""){
-                dark = cookie=="dark";
-                img = document.getElementById("icon_switch");
-                if(dark){
-                    img.src = "/assets/img/light_mode.svg";
-                    document.documentElement.classList.add("dark-mode");
-                }
-                else{
-                    img.src = "/assets/img/dark_mode.svg";
-                    document.documentElement.classList.remove("dark-mode");
-                }
-            }
+        }
         </script>
         {% block nav %}
         {% endblock %}
