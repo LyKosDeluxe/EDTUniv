@@ -25,7 +25,7 @@ class SchoolTimeTable
         $header_size = $this->sessionId->getHeaderSize();
         $header = substr($response, 0, $header_size);
         $this->sessionId->close();
-        $JSESSIONID = explode("=", explode(":", explode(";", $header)[2])[2])[1];
+        $JSESSIONID = explode("=", explode(":", explode(";", $header)[3])[2])[1];
         $this->fetchTimeTable->setOpt(CURLOPT_HTTPHEADER, array(
             'Cookie: JSESSIONID='.$JSESSIONID
         ));
