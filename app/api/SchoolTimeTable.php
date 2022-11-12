@@ -19,7 +19,7 @@ class SchoolTimeTable
 
     public function fetchTimeTable() : ?String
     {
-        $certificate = getcwd()."\cacert.pem";
+        $certificate = getcwd()."/cacert.pem";
         $this->sessionId->setOpt(CURLOPT_RETURNTRANSFER, true);
         $this->sessionId->setOpt(CURLOPT_HEADER, 1);
         $this->sessionId->setOpt(CURLOPT_CAINFO, $certificate);
@@ -35,6 +35,8 @@ class SchoolTimeTable
             'Cookie: JSESSIONID='.$JSESSIONID
         ));
         $this->fetchTimeTable->setOpt(CURLOPT_RETURNTRANSFER, true);
+        $this->fetchTimeTable->setOpt(CURLOPT_CAINFO, $certificate);
+        $this->fetchTimeTable->setOpt(CURLOPT_CAPATH, $certificate);
         $response = $this->fetchTimeTable->exec();
         return explode("&", explode("identifier=",$response)[1])[0];
     }
