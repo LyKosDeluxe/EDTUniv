@@ -19,9 +19,14 @@ class SchoolTimeTable
 
     public function fetchTimeTable() : ?String
     {
+        $certificate = getcwd()."\cacert.pem";
         $this->sessionId->setOpt(CURLOPT_RETURNTRANSFER, true);
         $this->sessionId->setOpt(CURLOPT_HEADER, 1);
+        $this->sessionId->setOpt(CURLOPT_CAINFO, $certificate);
+        $this->sessionId->setOpt(CURLOPT_CAPATH, $certificate);
         $response = $this->sessionId->exec();
+        //var_dump($this->sessionId->getError());
+        //var_dump(phpinfo());
         $header_size = $this->sessionId->getHeaderSize();
         $header = substr($response, 0, $header_size);
         $this->sessionId->close();

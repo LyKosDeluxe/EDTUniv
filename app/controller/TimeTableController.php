@@ -40,15 +40,7 @@ class TimeTableController extends Controller
             header('Location: /');
             return '';
         }
-
-
-
-
-
-
         //END CHECK;
-
-        $this->api->fetchTimeTable();
 
 
         return $this->render('edt.html.twig', [
@@ -100,8 +92,6 @@ class TimeTableController extends Controller
             'Sun' => '6',
         };
         //END CHECK;
-
-        $this->api->fetchTimeTable();
 
 
         return $this->render('today.html.twig', [

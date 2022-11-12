@@ -30,6 +30,11 @@ class Curl
     {
         curl_close($this->curl);
     }
+
+    public function getError()
+    {
+        return curl_error($this->curl);
+    }
 }
 
 
