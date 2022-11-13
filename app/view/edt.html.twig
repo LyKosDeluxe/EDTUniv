@@ -58,9 +58,7 @@
         {
             week = week.toString().split('W')[1];
         }
-        if(week < 33) {
-            //hein ?
-        } else {
+        if(week !< 33) {
             week -=33;
         }
 
@@ -70,42 +68,6 @@
         var width = document.documentElement.clientWidth;
         if(width<height) width = height;
         document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay=0%2C1%2C2%2C3%2C4&idTree={{ groupId }}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
-    }
-
-    window.onload = loadEdt({{ week }});
-    function getEDT(){
-        // 1. Créer un nouvel objet XMLHttpRequest
-        let xhr = new XMLHttpRequest();
-
-        // 2. Le configure : GET-request pour l'URL /article/.../load
-        xhr.open('GET', 'https://ade.univ-orleans.fr/jsp/custom/modules/plannings/direct_planning.jsp?days=0%2C1%2C2%2C3%2C4%2C5&displayConfName=ENT&height=700&login=etuWeb&password=&projectId=3&resources=2278&showOptions=false&showPianoDays=false&showPianoWeeks=false&showTree=false&weeks=4');
-        xhr.setRequestHeader('Access-Control-Request-Method', 'GET');
-        // 3. Envoyer la requête sur le réseau
-        xhr.send();
-
-        // 4. Ceci sera appelé après la réception de la réponse
-        xhr.onload = function() {
-        if (xhr.status != 200) { // analyse l'état HTTP de la réponse
-            alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
-        } else { // show the result
-            const JSESSIONID = client.getResponseHeader("Cookie");
-            console.log(JSESSIONID);
-            alert(`Done, got ${xhr.response.length} bytes`); // response est la réponse du serveur
-        }
-        };
-
-        xhr.onprogress = function(event) {
-        if (event.lengthComputable) {
-            alert(`Received ${event.loaded} of ${event.total} bytes`);
-        } else {
-            alert(`Received ${event.loaded} bytes`); // pas de Content-Length
-        }
-
-        };
-
-        xhr.onerror = function() {
-        alert("Request failed");
-        };
     }
 </script>
 {% endblock %}
