@@ -45,7 +45,7 @@ class SchoolTimeTable
     {
         $val= '';
         if (Auth::isAuth()) {
-            switch(CookieStockage::get('td')){
+            switch(CookieStockage::get('td')) {
                 case 0:
                     $val = "37172%2C37171%2C31260%2C31223%2C69178%2C31339";
                     break;
@@ -56,7 +56,7 @@ class SchoolTimeTable
                     $val = "37172%2C31260%2C31223%2C69178%2C31339";
                     break;
             }
-            switch(CookieStockage::get('tp')){
+            switch(CookieStockage::get('tp')) {
                 case 0:
                     $val .= "%2C50166%2C50167%2C26013%2C34655";
                     break;

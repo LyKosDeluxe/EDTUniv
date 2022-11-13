@@ -29,20 +29,19 @@
         {
             week = week.toString().split('W')[1];
         }
-        if(week < 33) {
-            //hein ?
-        } else {
+        if(week > 33) {
             week -=33;
         }
-
-        console.log('Using week ='+ week);
-
+        var date = new Date();
+        if(date.getDay() == 6 || date.getDay() == 0){
+            week += 1;
+        }
         var height = document.documentElement.clientHeight;
         var width = document.documentElement.clientWidth;
         if(width<height) width = height;
         document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay={{ today }}&idTree={{ groupId }}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
     }
 
-    window.onload = loadEdt({{ week }});
+    loadEdt({{ week }});
 </script>
 {% endblock %}
