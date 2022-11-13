@@ -32,7 +32,7 @@
             {% endif %}
         </div>
         <div class="contenthead">
-                <a class="basebutton"  href="edt/today">Aujourd'hui</a>
+                <a class="basebutton" href="edt/today">Aujourd'hui</a>
             </div>
             </div>
     </div>
@@ -54,16 +54,13 @@
 {% block javascript %}
 <script type="application/javascript">
     function loadEdt(week){
+        var pWeek = week;
         if(week.toString().includes('W'))
         {
             week = week.toString().split('W')[1];
         }
         if(week > 33) {
             week -=33;
-        }
-        var date = new Date();
-        if(date.getDay() == 6 || date.getDay() == 0){
-            week += 1;
         }
         var height = document.documentElement.clientHeight;
         var width = document.documentElement.clientWidth;

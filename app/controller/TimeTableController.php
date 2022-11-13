@@ -30,10 +30,28 @@ class TimeTableController extends Controller
         $date = date("Y-m-d H:i:s");
         $week = date("W", strtotime($date));
         $year = date("Y", strtotime($date));
+        $day = date("D", strtotime($date));
+
+        $nextWeek = match($day){
+            'Mon' => false,
+            'Tue' => false,
+            'Wed' => false,
+            'Thu' => false,
+            'Fri' => false,
+            'Sat' => true,
+            'Sun' => true,
+        };
+
+        if ($nextWeek) {
+            $week ++;
+        }
 
         $weekVal = $year.'-W';
-        if(strlen($week) < 2) $weekVal.= '0'.$week; else $weekVal.=$week;
-
+        if (strlen($week) < 2) {
+            $weekVal.= '0'.$week;
+        } else {
+            $weekVal.=$week;
+        }
         //Check if user is authenticated
         if(!Auth::isAuth())
         {
