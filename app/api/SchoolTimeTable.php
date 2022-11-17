@@ -43,17 +43,17 @@ class SchoolTimeTable
 
     public function getGroupId()
     {
-        $val= '';
+        $val= "68881%2C";
         if (Auth::isAuth()) {
             switch(CookieStockage::get('td')) {
                 case 0:
-                    $val = "37172%2C37171%2C31260%2C31223%2C69178%2C31339";
+                    $val .= "37172%2C37171%2C31260%2C31223%2C69178%2C31339";
                     break;
                 case 1:
-                    $val = "37171%2C31260%2C31223%2C69178%2C31339";
+                    $val .= "37171%2C31260%2C31223%2C69178%2C31339";
                     break;
                 case 2:
-                    $val = "37172%2C31260%2C31223%2C69178%2C31339";
+                    $val .= "37172%2C31260%2C31223%2C69178%2C31339";
                     break;
             }
             switch(CookieStockage::get('tp')) {
@@ -74,7 +74,7 @@ class SchoolTimeTable
                     break;
             }
         } else {
-            $val = "37171%2C37172%2C50166%2C50167%2C26013%2C34655%2C31260%2C31223%2C69178%2C31339";
+            $val .= "37171%2C37172%2C50166%2C50167%2C26013%2C34655%2C31260%2C31223%2C69178%2C31339";
         }
         return $val;
     }
