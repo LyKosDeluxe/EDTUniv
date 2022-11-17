@@ -9,7 +9,7 @@
     <meta property="og:site_name" content="L3_ | Orléans">
     <meta name="description" content="Voici l'emploi du temps des L3 Miage d'Orléans">
     <link href="/assets/img/l3_.png" rel="shortcut icon">
-    <link rel="stylesheet" href="/assets/css/global.css?v=1">
+    <link rel="stylesheet" href="/assets/css/global.css?v=2">
     <meta property="og:image" content="/assets/img/l3large.png" />
     <meta name="theme-color" content="#07a89e"/>
     <link rel="apple-touch-icon" sizes="128x128" href="/assets/img/l3large.png">
@@ -25,6 +25,8 @@
         <a id="color-switch" href="#">
             <img id="icon_switch" class="color-switch" src="/assets/img/dark_mode.svg"></img>
         </a>
+        {% block icon %}
+        {% endblock %}
         <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register("/serviceworker.js");
@@ -89,7 +91,7 @@
 
     <footer class="center">
         <div class="centeritem helpus">
-            <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank" style="text-decoration:none;">
+            <a href="https://github.com/LeMustelide/EmploisDuTemps_Univ-Orleans" target="_blank">
                 <div class="cards">
                     Tu souhaites nous aider ? Viens soumettre tes idées et correctifs depuis le <u>GitHub du projet</u> !
                 </div>

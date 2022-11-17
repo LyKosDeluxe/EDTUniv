@@ -1,39 +1,40 @@
 {% extends '/templates/base.html.twig' %}
 
+{% block icon %}
+    <a onclick="changeFormat('day')" href="#">
+        <img id="icon" alt="changeFormat" class="changeFormat" src="/assets/img/calendar_view_day.svg"></img>
+    </a>
+{% endblock %}
 {% block nav %}
-
     <a href="/logout">
         <img id="icon" alt="logout" class="logout" src="/assets/img/logout.svg"></img>
     </a>
-
 {% endblock %}
 {% block container %}
-<div id="Title" class="maincontent" style="display: flex;justify-content: space-between;">
+<div id="Title" class="maincontent">
     <div>
-        <h1 style="font-size: 22px;margin-bottom: 0px; display:inline-block;">Heureux de te revoir {{username}}👋</h1>
-        <p style="margin-left: 15px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
-        <select id="selectFormat" onChange="changeFormat(this.value)" style="margin-left: 15px; width: 100px ;padding: 5px; text-align: left;">
+        <h1>Heureux de te revoir {{username}}👋</h1>
+        <p><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
+        <select id="selectFormat" onChange="changeFormat(this.value)" class="selectFormat">
             <option value="week" selected="">Semaine</option>
             <option value="day">Jour</option>
         </select>
     </div>
-    <div id="Settings" class="maincontent" style="display: flex;gap: 1em;">
-        <div class="contenthead">
-            {% if chrome == 1 %}
-                <input onchange="loadEdt(this.value)" value="{{ weekVal }}" type="week" name="week" id="camp-week" min="'.{{ year }}.'-W33" max="'.{{ year+1 }}.'-W30" required>
-            {% else %}
-                <select onchange="loadEdt(this.value)" class="week" style="text-align-last: center;" name="semaine">
-                    {% for opt in options %}
-                        {% if opt[1] == (week-33) %}
-                            <option style="display: flex; align-items: center; justify-content: center;" selected='selected' value="{{ opt[1] }}">{{ opt[0] }}</option>
-                        {% else %}
-                            <option style="display: flex; align-items: center; justify-content: center;" value="{{ opt[1] }}">{{ opt[0] }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            {% endif %}
-        </div>
-        <div class="contenthead">
+    <div id="Settings" class="maincontent">
+        {% if chrome == 1 %}
+            <input onchange="loadEdt(this.value)" value="{{ weekVal }}" type="week" name="week" id="camp-week" min="'.{{ year }}.'-W33" max="'.{{ year+1 }}.'-W30" required>
+        {% else %}
+            <select onchange="loadEdt(this.value)" class="week" name="semaine">
+                {% for opt in options %}
+                    {% if opt[1] == (week-33) %}
+                        <option selected='selected' value="{{ opt[1] }}">{{ opt[0] }}</option>
+                    {% else %}
+                        <option value="{{ opt[1] }}">{{ opt[0] }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        {% endif %}
+        <div class="contenthead-button">
             <a class="basebutton" id="previus" href="#">Précedent</a>
             <a class="basebutton" onclick="loadEdt({{ week }})" href="#">Actuelle</a>
             <a class="basebutton" id="next" href="#">Suivant</a>

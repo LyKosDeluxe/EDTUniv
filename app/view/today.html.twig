@@ -1,23 +1,28 @@
 {% extends '/templates/base.html.twig' %}
 
-{% block nav %}
+{% block icon %}
+    <a id="changeFormat" onclick="changeFormat('week')" href="#">
+        <img id="icon" class="changeFormat" src="/assets/img/calendar_view_week.svg"></img>
+    </a>
+{% endblock %}
 
+{% block nav %}
     <a href="/logout">
         <img id="icon" class="logout" src="/assets/img/logout.svg"></img>
     </a>
 {% endblock %}
 {% block container %}
     <div class="maincontent">
-        <div class="contenthead">
+        <div id="Title">
             <div>
-                <h1 style="font-size: 22px;margin-bottom: 0px">📅 Aujourd'hui :</h1>
-                <p style="margin-left: 15px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
-                <select id="selectFormat" onChange="changeFormat(this.value)" style="margin-left: 15px; width: 100px ;padding: 5px; text-align: left;">
+                <h1>📅 Aujourd'hui :</h1>
+                <p><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
+                <select id="selectFormat" onChange="changeFormat(this.value)" class="selectFormat">
                     <option value="week">Semaine</option>
                     <option value="day" selected="">Jour</option>
                 </select>
             </div>
-            <div class="contenthead">
+            <div class="contenthead-button">
                 <a class="basebutton" id="previus" href="#">Précedent</a>
                 <a class="basebutton" onclick="loadEdt({{ week }}, {{ today }})" href="#">Aujourd'hui</a>
                 <a class="basebutton" id="next" href="#">Suivant</a>

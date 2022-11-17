@@ -20,13 +20,21 @@
     font-family: 'Reem Kufi', sans-serif;
 }
 
+.changeFormat {
+    filter: invert(1);
+    height: 24px;
+    display: none;
+    position: absolute;
+    left: 50px;
+}
+
 .logo {
     height: 24px;
     margin-left: 12px;
 }
 
-emoji {
-    font-family: emoji;
+footer a {
+    text-decoration: none;
 }
 
 .error {
@@ -198,6 +206,13 @@ input[type='text'] {
     border-radius: 3px;
 }
 
+.selectFormat {
+    margin-left: 15px;
+    width: 100px;
+    padding: 5px;
+    text-align: left;
+}
+
 select {
     height: 30px;
     margin: 4px 0;
@@ -212,12 +227,21 @@ select {
     border-radius: 3px;
 }
 
-form select{
+form select {
     min-width: 150px;
 }
 
-select.week {
+.week {
     min-width: fit-content;
+    text-align-last: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.week option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 hr {
@@ -298,11 +322,39 @@ hr {
     margin: 12px;
 }
 
+#Title {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Title h1 {
+    font-size: 22px;
+    margin-bottom: 0px;
+    display: inline-block;
+}
+
+#Title>div p {
+    margin-left: 15px;
+}
+
+#Settings {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
 @media (max-width: 480px) {
+
+    .changeFormat {
+        display: block;
+    }
+
+    #selectFormat {
+        display: none;
+    }
 
     .maincontent {
         margin: 5px;
-
     }
 
     #Title {
@@ -310,7 +362,8 @@ hr {
     }
 
     #Settings {
-        flex-direction: row;
+        flex-direction: column;
+        gap: 0px;
         justify-content: space-between;
     }
 }
@@ -356,12 +409,21 @@ p {
     border-color: #07a89e;
 }
 
-.contenthead {
+.contenthead-button {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
     gap: 1em;
+}
+
+.contenthead>div h1 {
+    font-size: 22px;
+    margin-bottom: 0px
+}
+
+.contenthead>div p {
+    margin-left: 15px;
 }
 
 .contenthead>* {
@@ -369,6 +431,11 @@ p {
 }
 
 @media (max-width: 480px) {
+    .contenthead-button{
+        align-items: center;
+        justify-content: center;
+    }
+
     .basebutton {
         font-size: 11px;
     }
@@ -423,12 +490,6 @@ input[type="week"] {
     color: #ff3636;
 }
 
-.contenthead {
-    margin-top: 1%;
-    margin-bottom: 1%;
-    gap: 1em;
-}
-
 .centeritem {
     display: flex;
     justify-content: space-around;
@@ -466,6 +527,22 @@ input[type="week"] {
         text-align: left;
         padding: 15px;
         text-decoration: none;
+    }
+
+    .contenthead-button {
+        gap: 0px;
+    }
+
+    .contenthead-button .basebutton:nth-child(2){
+        border-radius: 0px ;
+    }
+
+    .contenthead-button .basebutton:first-child{
+        border-radius: 10px 0px 0px 10px ;
+    }
+
+    .contenthead-button .basebutton:last-child{
+        border-radius: 0px 10px 10px 0px ;
     }
 }
 
@@ -505,7 +582,7 @@ footer {
     margin-right: 0px !important;
 }
 
-.color-switch{
+.color-switch {
     margin-right: 5px;
     filter: invert(1);
     height: 24px;
