@@ -20,6 +20,13 @@
         </div>
         <div class="center" id="edtContainer">
         </div>
+        <div class="maincontent center">
+            {% if classId == ""%}
+                <p>Vous avez un doute sur les cours affichés ? <br> Regardez l'emploi du temps global de votre classe <a href="/edt/today?classId=2278">ici</a></p>
+            {% else %}
+                <p> <a href="/edt"> Retour à l'emploi du temps part groupe. </a> </p>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
 {% block javascript %}
@@ -39,7 +46,7 @@
         var height = document.documentElement.clientHeight;
         var width = document.documentElement.clientWidth;
         if(width<height) width = height;
-        document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay={{ today }}&idTree={{ groupId }}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
+        document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay={{ today }}&idTree={% if classId != ""%}{{ classId }}{% else %}{{ groupId }}{% endif %}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
     }
 
     loadEdt({{ week }});

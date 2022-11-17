@@ -39,23 +39,20 @@
     <div class="center" id="edtContainer">
 
     </div>
-    </div>
     <div class="maincontent center">
-
-    <div>
-        {% if classId == ""%}
-            <p>Vous avez un doute sur les cours affichés ? <br> Regardait l'emploi du temps global de votre classe <a href="/edt?classId=2278">ici</a></p>
+        <div>
+            {% if classId == ""%}
+                <p>Vous avez un doute sur les cours affichés ? <br> Regardez l'emploi du temps global de votre classe <a href="/edt?classId=2278">ici</a></p>
+            {% else %}
+                <p> <a href="/edt"> Retour à l'emploi du temps part groupe. </a> </p>
+            {% endif %}
+        </div>
+        {% if android == true %}
+            <a href="http://www.google.com/calendar/render?cid=http%3A%2F%2Fwww.univ-orleans.fr%2FEDTWeb%2Fexport%3Fproject%3D2022-2023%26resources%3D2278%26type%3Dical">Ajouter à Google Agenda</a>
         {% else %}
-            <p> <a href="/edt"> Retour à l'emploi du temps part groupe. </a> </p>
+            <a href="http://www.univ-orleans.fr/EDTWeb/export?project=2022-2023&resources=2278&type=ical">Exporter l'iCal</a>
         {% endif %}
     </div>
-{% if android == true %}
-    <a href="http://www.google.com/calendar/render?cid=http%3A%2F%2Fwww.univ-orleans.fr%2FEDTWeb%2Fexport%3Fproject%3D2022-2023%26resources%3D2278%26type%3Dical">Ajouter à Google Agenda</a>
-{% else %}
-   <a href="http://www.univ-orleans.fr/EDTWeb/export?project=2022-2023&resources=2278&type=ical">Exporter l'iCal</a>
-{% endif %}
-
-</div>
 {% endblock %}
 {% block javascript %}
 <script type="application/javascript">

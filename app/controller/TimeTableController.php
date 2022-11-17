@@ -24,9 +24,6 @@ class TimeTableController extends Controller
      */
     public function main($week = null): string
     {
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
         $date = date("Y-m-d H:i:s");
         $week = date("W", strtotime($date));
         $year = date("Y", strtotime($date));
@@ -86,6 +83,9 @@ class TimeTableController extends Controller
      */
     public function today(): string
     {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         $date = date("Y-m-d H:i:s");
         $week = date("W", strtotime($date));
         $year = date("Y", strtotime($date));
@@ -110,7 +110,7 @@ class TimeTableController extends Controller
             'Sun' => '0',
         };
         //END CHECK;
-
+        $classId = isset($_GET['classId']) ? ($_GET['classId']) : "";
 
         return $this->render('today.html.twig', [
             'tp' => CookieStockage::get('tp'),
@@ -122,7 +122,8 @@ class TimeTableController extends Controller
             'iphone' => OperatingSystem::isApple(),
             'today' => $today,
             'year' => $year,
-            'pwa' => OperatingSystem::isPwa()
+            'pwa' => OperatingSystem::isPwa(),
+            'classId' => $classId
         ]);
     }
 
