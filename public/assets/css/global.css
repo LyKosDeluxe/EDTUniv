@@ -201,7 +201,6 @@ input[type='text'] {
 select {
     height: 30px;
     margin: 4px 0;
-    min-width: 150px;
     box-sizing: border-box;
     background: #e2e2e2;
     border-width: 0px;
@@ -211,6 +210,10 @@ select {
     border-color: #07a89e;
     -webkit-appearance: none;
     border-radius: 3px;
+}
+
+form select{
+    min-width: 150px;
 }
 
 select.week {

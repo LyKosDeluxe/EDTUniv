@@ -11,11 +11,16 @@
         <div class="contenthead">
             <div>
                 <h1 style="font-size: 22px;margin-bottom: 0px">📅 Aujourd'hui :</h1>
-                <p style="margin-left: 35px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
-
+                <p style="margin-left: 15px;"><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
+                <select id="selectFormat" onChange="changeFormat(this.value)" style="margin-left: 15px; width: 100px ;padding: 5px; text-align: left;">
+                    <option value="week">Semaine</option>
+                    <option value="day" selected="">Jour</option>
+                </select>
             </div>
             <div class="contenthead">
-                <a class="basebutton" href="/edt">Retour</a>
+                <a class="basebutton" id="previus" href="#">Précedent</a>
+                <a class="basebutton" onclick="loadEdt({{ week }}, {{ today }})" href="#">Aujourd'hui</a>
+                <a class="basebutton" id="next" href="#">Suivant</a>
             </div>
         </div>
         <div class="center" id="edtContainer">
@@ -24,14 +29,34 @@
             {% if classId == ""%}
                 <p>Vous avez un doute sur les cours affichés ? <br> Regardez l'emploi du temps global de votre classe <a href="/edt/today?classId=2278">ici</a></p>
             {% else %}
-                <p> <a href="/edt"> Retour à l'emploi du temps part groupe. </a> </p>
+                <p> <a href="/edt/today"> Retour à l'emploi du temps part groupe. </a> </p>
             {% endif %}
         </div>
     </div>
 {% endblock %}
 {% block javascript %}
 <script type="application/javascript">
-    function loadEdt(week){
+    function changeFormat(format){
+        if(format == "week"){
+            document.location.href = "/edt";
+        }
+        else if(format == "day"){
+            document.location.href = "/edt/today";
+        }
+    }
+    
+    function loadEdt(week, day){
+        if(day > 0){
+            document.getElementById("previus").onclick = function() {loadEdt(week, day-1);};
+        } else {
+            document.getElementById("previus").onclick = function() {loadEdt(week-1, 4);};
+        }
+        if(day < 4) {
+            document.getElementById("next").onclick = function() {loadEdt(week, day+1);};
+            
+        } else {
+            document.getElementById("next").onclick = function() {loadEdt(week+1, 0);};
+        }
         if(week.toString().includes('W'))
         {
             week = week.toString().split('W')[1];
@@ -45,10 +70,11 @@
         }
         var height = document.documentElement.clientHeight;
         var width = document.documentElement.clientWidth;
+        var today = day;
         if(width<height) width = height;
-        document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay={{ today }}&idTree={% if classId != ""%}{{ classId }}{% else %}{{ groupId }}{% endif %}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
+        document.getElementById("edtContainer").innerHTML = `<img class="edt" alt="En temps normal, il y a l'Emploi du temps ici." src="https://aderead.univ-orleans.fr/jsp/imageEt?identifier={{ identifier }}&projectId=3&idPianoWeek=${week}&idPianoDay=${today}&idTree={% if classId != ""%}{{ classId }}{% else %}{{ groupId }}{% endif %}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169"></img>`;
     }
 
-    loadEdt({{ week }});
+    loadEdt({{ week }}, {{ today }});
 </script>
 {% endblock %}
