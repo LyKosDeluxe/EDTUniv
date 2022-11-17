@@ -25,8 +25,6 @@ class SchoolTimeTable
         $this->sessionId->setOpt(CURLOPT_CAINFO, $certificate);
         $this->sessionId->setOpt(CURLOPT_CAPATH, $certificate);
         $response = $this->sessionId->exec();
-        //var_dump($this->sessionId->getError());
-        //var_dump(phpinfo());
         $header_size = $this->sessionId->getHeaderSize();
         $header = substr($response, 0, $header_size);
         $this->sessionId->close();

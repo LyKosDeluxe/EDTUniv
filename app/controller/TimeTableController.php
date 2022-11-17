@@ -7,9 +7,6 @@ use app\core\Auth;
 use app\core\OperatingSystem;
 use app\stockage\CookieStockage;
 use DateTime;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
 class TimeTableController extends Controller
 {
@@ -27,6 +24,9 @@ class TimeTableController extends Controller
      */
     public function main($week = null): string
     {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         $date = date("Y-m-d H:i:s");
         $week = date("W", strtotime($date));
         $year = date("Y", strtotime($date));
@@ -53,13 +53,12 @@ class TimeTableController extends Controller
             $weekVal.=$week;
         }
         //Check if user is authenticated
-        if(!Auth::isAuth())
-        {
+        if (!Auth::isAuth()) {
             header('Location: /');
             return '';
         }
         //END CHECK;
-
+        $classId = isset($_GET['classId']) ? ($_GET['classId']) : "";
 
         return $this->render('edt.html.twig', [
             'tp' => CookieStockage::get('tp'),
@@ -74,7 +73,8 @@ class TimeTableController extends Controller
             'weekVal' => $weekVal,
             'options' => $this->fetchOptions(),
             'chrome' => OperatingSystem::isChrome(),
-            'pwa' => OperatingSystem::isPwa()
+            'pwa' => OperatingSystem::isPwa(),
+            'classId' => $classId
         ]);
     }
 
