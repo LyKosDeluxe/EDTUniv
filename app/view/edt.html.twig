@@ -15,10 +15,6 @@
     <div>
         <h1>Heureux de te revoir {{username}}👋</h1>
         <p><i> <b>Groupe TP</b> n°{{tp}} </i>|<i> <b>Groupe TD </b>n°{{ td }}</i></p>
-        <select id="selectFormat" onChange="changeFormat(this.value)" class="selectFormat">
-            <option value="week" selected="">Semaine</option>
-            <option value="day">Jour</option>
-        </select>
     </div>
     <div id="Settings" class="maincontent">
         {% if chrome == 1 %}

@@ -23,9 +23,13 @@
 .changeFormat {
     filter: invert(1);
     height: 24px;
-    display: none;
+    display: block;
     position: absolute;
-    left: 50px;
+    left: 64px;
+}
+
+form button{
+    min-width: 128px;
 }
 
 .logo {
@@ -346,7 +350,7 @@ hr {
 @media (max-width: 480px) {
 
     .changeFormat {
-        display: block;
+        left: 50px;
     }
 
     #selectFormat {
