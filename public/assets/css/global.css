@@ -30,7 +30,6 @@
 
 .logo {
     height: 24px;
-    margin-left: 12px;
 }
 
 footer a {
@@ -200,8 +199,7 @@ input[type='text'] {
     border-width: 0px;
     text-align: center;
     outline: none;
-    border-left: 3px solid;
-    border-color: #07a89e;
+    border-left: 3px solid #07a89e;
     -webkit-appearance: none;
     border-radius: 3px;
 }
@@ -221,8 +219,7 @@ select {
     border-width: 0px;
     text-align: center;
     outline: none;
-    border-left: 3px solid;
-    border-color: #07a89e;
+    border-left: 3px solid #07a89e;
     -webkit-appearance: none;
     border-radius: 3px;
 }
@@ -303,8 +300,7 @@ hr {
     transition-property: background-color, border, color;
     transition-duration: 0.5s;
     font-family: 'Red Hat Display', sans-serif;
-    border-style: solid;
-    border-color: #07a89e;
+    border: solid #07a89e;
     -webkit-appearance: none;
     border-radius: 3px;
 }
@@ -313,9 +309,8 @@ hr {
     background-color: #38c9bf00;
     transition-property: background-color, border, color;
     transition-duration: 0.3s;
-    border-style: solid;
+    border: solid #07a89e;
     color: #07a89e;
-    border-color: #07a89e;
 }
 
 .maincontent {
@@ -392,8 +387,7 @@ p {
     transition-property: background-color, border, color;
     transition-duration: 0.5s;
     font-family: 'Red Hat Display', sans-serif;
-    border-style: solid;
-    border-color: #07a89e;
+    border: solid #07a89e;
     text-decoration: none;
     border-width: 3px;
 
@@ -403,10 +397,9 @@ p {
     background-color: #38c9bf00;
     transition-property: background-color, border, color;
     transition-duration: 0.3s;
-    border-style: solid;
+    border-style: solid #07a89e;
     border-width: 3px;
     color: #07a89e;
-    border-color: #07a89e;
 }
 
 .contenthead-button {
@@ -442,6 +435,7 @@ p {
 }
 
 input[type="week"] {
+    min-width: 135px;
     height: 30px;
     padding: 6px 2px;
     margin: 4px 0;
@@ -451,8 +445,7 @@ input[type="week"] {
     font-family: 'Red Hat Display', sans-serif;
     color: rgb(0, 0, 0);
     outline: none;
-    border-left: 3px solid;
-    border-color: #07a89e;
+    border-left: 3px solid #07a89e;
     -webkit-appearance: none;
     border-radius: 3px;
 }
@@ -590,39 +583,6 @@ footer {
     left: 15px;
     margin-right: 0px !important;
 }
-
-.tooltip {
-    position: relative;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 96px;
-    bottom: -40%;
-    left: 50%;
-    margin-left: -50px;
-    background-color: rgba(255, 255, 255, 0);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 0px 0px 15px 15px;
-    border-width: 0px;
-    border-color: #ffffff;
-    border-style: solid;
-    position: absolute;
-    z-index: 1;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.12s linear;
-    font-size: 13px;
-}
-
-.tooltip:active .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.12s linear;
-}
-
 /*     __        __ __
       / /  __ __/ //_/__  ___
      / /__/ // / ,< / _ \(_-<

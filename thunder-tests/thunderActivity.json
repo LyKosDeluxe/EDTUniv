@@ -1,0 +1,142 @@
+[
+  {
+    "_id": "f141c80a-9d6c-4a82-aba7-3d3c03bbe46d",
+    "colId": "history",
+    "containerId": "",
+    "name": "Search ADE",
+    "url": "https://aderead.univ-orleans.fr/jsp/standard/gui/tree.jsp?login=etuWeb&password&projectId=3&xyz=1668727897997&what0=boolean%3BIs+Room%3BIS_CLASSROOM&how0=true&getText0=&what1=string%3BName%3BNAME&how1=equals&getText1=E03&what2=-1&how2=contains&getText2=&what3=-1&how3=contains&getText3=&what4=-1&how4=contains&getText4=&filterId=-1&nbFilters=5&nbLines=5&bigTree=null&isDirect=",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-11-17T23:40:42.004Z",
+    "modified": "2022-11-18T00:01:44.926Z",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "JSESSIONID=E8EBE35C211B6CFF29C3F51D860B807A"
+      }
+    ],
+    "params": [
+      {
+        "name": "login",
+        "value": "etuWeb",
+        "isPath": false
+      },
+      {
+        "name": "password",
+        "value": "",
+        "isPath": false
+      },
+      {
+        "name": "projectId",
+        "value": "3",
+        "isPath": false
+      },
+      {
+        "name": "xyz",
+        "value": "1668727897997",
+        "isPath": false
+      },
+      {
+        "name": "what0",
+        "value": "boolean%3BIs+Room%3BIS_CLASSROOM",
+        "isPath": false
+      },
+      {
+        "name": "how0",
+        "value": "true",
+        "isPath": false
+      },
+      {
+        "name": "getText0",
+        "value": "",
+        "isPath": false
+      },
+      {
+        "name": "what1",
+        "value": "string%3BName%3BNAME",
+        "isPath": false
+      },
+      {
+        "name": "how1",
+        "value": "equals",
+        "isPath": false
+      },
+      {
+        "name": "getText1",
+        "value": "E03",
+        "isPath": false
+      },
+      {
+        "name": "what2",
+        "value": "-1",
+        "isPath": false
+      },
+      {
+        "name": "how2",
+        "value": "contains",
+        "isPath": false
+      },
+      {
+        "name": "getText2",
+        "value": "",
+        "isPath": false
+      },
+      {
+        "name": "what3",
+        "value": "-1",
+        "isPath": false
+      },
+      {
+        "name": "how3",
+        "value": "contains",
+        "isPath": false
+      },
+      {
+        "name": "getText3",
+        "value": "",
+        "isPath": false
+      },
+      {
+        "name": "what4",
+        "value": "-1",
+        "isPath": false
+      },
+      {
+        "name": "how4",
+        "value": "contains",
+        "isPath": false
+      },
+      {
+        "name": "getText4",
+        "value": "",
+        "isPath": false
+      },
+      {
+        "name": "filterId",
+        "value": "-1",
+        "isPath": false
+      },
+      {
+        "name": "nbFilters",
+        "value": "5",
+        "isPath": false
+      },
+      {
+        "name": "nbLines",
+        "value": "5",
+        "isPath": false
+      },
+      {
+        "name": "bigTree",
+        "value": "null",
+        "isPath": false
+      },
+      {
+        "name": "isDirect",
+        "value": "",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  }
+]

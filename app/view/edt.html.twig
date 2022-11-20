@@ -35,9 +35,9 @@
             </select>
         {% endif %}
         <div class="contenthead-button">
-            <a class="basebutton" id="previus" href="#">Précedent</a>
+            <a class="basebutton" id="previus" href="#">Précedente</a>
             <a class="basebutton" onclick="loadEdt({{ week }})" href="#">Actuelle</a>
-            <a class="basebutton" id="next" href="#">Suivant</a>
+            <a class="basebutton" id="next" href="#">Suivante</a>
         </div>
     </div>
 </div>
@@ -49,7 +49,7 @@
         {% if classId == ""%}
             <p>Vous avez un doute sur les cours affichés ? <br> Regardez l'emploi du temps global de votre classe <a href="/edt?classId=2278">ici</a></p>
         {% else %}
-            <p> <a href="/edt"> Retour à l'emploi du temps part groupe. </a> </p>
+            <p> <a href="/edt"> Retour à l'emploi du temps par groupe. </a> </p>
         {% endif %}
     </div>
     {% if android == true %}
